@@ -102,7 +102,7 @@ Heterogeneous multi-agent improves faithfulness by +0.058 over best homogeneous 
 ### 1. Setup
 
 ```bash
-git clone <repo>
+git clone https://github.com/vifirsanova/educational_fluency
 cd educational_fluency
 
 python -m venv .venv
