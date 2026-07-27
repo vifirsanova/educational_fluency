@@ -1,0 +1,226 @@
+{
+  "timestamp": "20260727_150836",
+  "mode": "quick",
+  "total_samples": 10,
+  "config": {
+    "confidence_threshold": 0.75,
+    "faithfulness_threshold": 0.7,
+    "low_confidence_threshold": 0.5,
+    "max_sentences_low_confidence": 3
+  },
+  "single_agent": {
+    "qwen": {
+      "model": "qwen3-235b-a22b-fp8/latest",
+      "responses": [],
+      "faithfulness_scores": [],
+      "pass_count": 0,
+      "latencies": [],
+      "summary": {
+        "mean_faithfulness": 0,
+        "std_faithfulness": 0.0,
+        "pass_rate": 0,
+        "total_samples": 0,
+        "mean_latency": 0
+      }
+    },
+    "gpt-oss": {
+      "model": "gpt-oss-120b/latest",
+      "responses": [],
+      "faithfulness_scores": [],
+      "pass_count": 0,
+      "latencies": [],
+      "summary": {
+        "mean_faithfulness": 0,
+        "std_faithfulness": 0.0,
+        "pass_rate": 0,
+        "total_samples": 0,
+        "mean_latency": 0
+      }
+    },
+    "deepseek": {
+      "model": "deepseek-v4-flash/latest",
+      "responses": [],
+      "faithfulness_scores": [],
+      "pass_count": 0,
+      "latencies": [],
+      "summary": {
+        "mean_faithfulness": 0,
+        "std_faithfulness": 0.0,
+        "pass_rate": 0,
+        "total_samples": 0,
+        "mean_latency": 0
+      }
+    }
+  },
+  "homogeneous": {
+    "qwen-only": {
+      "config_name": "qwen-only",
+      "model_assignment": {
+        "gatekeeper": "qwen",
+        "verifier": "qwen",
+        "editor": "qwen"
+      },
+      "is_homogeneous": true,
+      "responses": [],
+      "faithfulness_scores": [],
+      "pass_count": 0,
+      "hitl_triggers": {},
+      "error_type_scores": {},
+      "latencies": [],
+      "summary": {
+        "mean_faithfulness": 0,
+        "std_faithfulness": 0.0,
+        "pass_rate": 0,
+        "total_samples": 0,
+        "mean_latency": 0,
+        "hitl_triggers": {},
+        "hitl_percentage": {},
+        "total_hitl_percentage": 0
+      }
+    },
+    "gpt-oss-only": {
+      "config_name": "gpt-oss-only",
+      "model_assignment": {
+        "gatekeeper": "gpt-oss",
+        "verifier": "gpt-oss",
+        "editor": "gpt-oss"
+      },
+      "is_homogeneous": true,
+      "responses": [],
+      "faithfulness_scores": [],
+      "pass_count": 0,
+      "hitl_triggers": {},
+      "error_type_scores": {},
+      "latencies": [],
+      "summary": {
+        "mean_faithfulness": 0,
+        "std_faithfulness": 0.0,
+        "pass_rate": 0,
+        "total_samples": 0,
+        "mean_latency": 0,
+        "hitl_triggers": {},
+        "hitl_percentage": {},
+        "total_hitl_percentage": 0
+      }
+    },
+    "deepseek-only": {
+      "config_name": "deepseek-only",
+      "model_assignment": {
+        "gatekeeper": "deepseek",
+        "verifier": "deepseek",
+        "editor": "deepseek"
+      },
+      "is_homogeneous": true,
+      "responses": [],
+      "faithfulness_scores": [],
+      "pass_count": 0,
+      "hitl_triggers": {},
+      "error_type_scores": {},
+      "latencies": [],
+      "summary": {
+        "mean_faithfulness": 0,
+        "std_faithfulness": 0.0,
+        "pass_rate": 0,
+        "total_samples": 0,
+        "mean_latency": 0,
+        "hitl_triggers": {},
+        "hitl_percentage": {},
+        "total_hitl_percentage": 0
+      }
+    }
+  },
+  "heterogeneous": {
+    "best": {
+      "config_name": "heterogeneous",
+      "model_assignment": {
+        "gatekeeper": "deepseek",
+        "verifier": "qwen",
+        "editor": "gpt-oss"
+      },
+      "is_homogeneous": false,
+      "responses": [],
+      "faithfulness_scores": [],
+      "pass_count": 0,
+      "hitl_triggers": {},
+      "error_type_scores": {},
+      "latencies": [],
+      "summary": {
+        "mean_faithfulness": 0,
+        "std_faithfulness": 0.0,
+        "pass_rate": 0,
+        "total_samples": 0,
+        "mean_latency": 0,
+        "hitl_triggers": {},
+        "hitl_percentage": {},
+        "total_hitl_percentage": 0
+      }
+    }
+  },
+  "error_type_analysis": {
+    "Entity Replacement": {},
+    "Numerical Distortion": {},
+    "Negation Flip": {},
+    "Temporal Confusion": {},
+    "Causal Reversal": {},
+    "Plausible Fabrication": {},
+    "Oversimplification": {},
+    "Citation Hallucination": {}
+  },
+  "hitl_analysis": {
+    "qwen": {
+      "low_confidence": 0,
+      "medium_confidence_repeated": 0,
+      "low_faithfulness": 0,
+      "excessive_removal": 0,
+      "total": 0,
+      "total_percentage": 0
+    },
+    "gpt-oss": {
+      "low_confidence": 0,
+      "medium_confidence_repeated": 0,
+      "low_faithfulness": 0,
+      "excessive_removal": 0,
+      "total": 0,
+      "total_percentage": 0
+    },
+    "deepseek": {
+      "low_confidence": 0,
+      "medium_confidence_repeated": 0,
+      "low_faithfulness": 0,
+      "excessive_removal": 0,
+      "total": 0,
+      "total_percentage": 0
+    },
+    "heterogeneous": {
+      "low_confidence": 0,
+      "medium_confidence_repeated": 0,
+      "low_faithfulness": 0,
+      "excessive_removal": 0,
+      "total": 0,
+      "total_percentage": 0
+    }
+  },
+  "latency_analysis": {
+    "single_qwen": {
+      "mean_latency": 0
+    },
+    "single_gpt-oss": {
+      "mean_latency": 0
+    },
+    "single_deepseek": {
+      "mean_latency": 0
+    },
+    "homogeneous_qwen": {
+      "mean_latency": 0
+    },
+    "homogeneous_gpt-oss": {
+      "mean_latency": 0
+    },
+    "homogeneous_deepseek": {
+      "mean_latency": 0
+    },
+    "heterogeneous": {
+      "mean_latency": 0
+    }
+  }
+}

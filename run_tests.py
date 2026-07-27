@@ -21,14 +21,16 @@ from collections import defaultdict
 
 import yaml
 from tqdm import tqdm
+from dotenv import load_dotenv
 
-# Add the parent directory to path for imports
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+load_dotenv()
 
-from gatekeeper import Gatekeeper
-from verifier import Verifier
-from editor import Editor
-from orchestrator import Orchestrator
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
+from src.agents.gatekeeper import Gatekeeper
+from src.agents.verifier import Verifier
+from src.agents.editor import Editor
+from src.agents.orchestrator import Orchestrator
 
 
 class EvaluationRunner:
@@ -109,9 +111,6 @@ class EvaluationRunner:
                 "confidence_threshold_for_compression": 0.9,
                 "max_removal_percentage": 0.5,
             },
-            "openrouter": {
-                "base_url": "https://openrouter.ai/api/v1",
-            },
         }
         
     def load_test_data(self, data_path: str, limit: int = None) -> List[Dict]:
@@ -138,6 +137,32 @@ class EvaluationRunner:
             
         return test_data
     
+    def _extract_query(self, item: Dict) -> str:
+        """Extract query from item (handles different field names)."""
+        for field in ["original", "text", "query", "passage", "content"]:
+            if field in item and item[field]:
+                return str(item[field])
+        return ""
+    
+    def _extract_passages(self, item: Dict) -> List[str]:
+        """Extract passages from item."""
+        passages = []
+        
+        if "hallucinated" in item and item["hallucinated"]:
+            passages.append(str(item["hallucinated"]))
+        
+        for field in ["passages", "retrieved_passages", "context", "evidence"]:
+            if field in item and item[field]:
+                if isinstance(item[field], list):
+                    passages.extend([str(p) for p in item[field] if p])
+                elif isinstance(item[field], str):
+                    passages.append(str(item[field]))
+        
+        if not passages and "original" in item and item["original"]:
+            passages.append(str(item["original"]))
+            
+        return passages
+    
     def run_single_agent_baseline(
         self,
         model_key: str,
@@ -163,15 +188,26 @@ class EvaluationRunner:
         # but we bypass the multi-agent pipeline
         client = orchestrator.client
         
-        for i, item in enumerate(tqdm(test_data[:limit] if limit else test_data)):
-            query = item.get("text", item.get("query", ""))
-            passages = item.get("passages", item.get("retrieved_passages", []))
+        # Get folder_id from environment
+        folder_id = os.environ.get("YANDEX_FOLDER_ID", "")
+        
+        # Build the full model URI with folder ID (same as in generate_hallucinated_pairs.py)
+        if folder_id:
+            full_model_uri = f"gpt://{folder_id}/{model_name}"
+        else:
+            full_model_uri = model_name
+        
+        data_iter = test_data[:limit] if limit else test_data
+        
+        for i, item in enumerate(tqdm(data_iter, desc=f"Single-agent {model_key}")):
+            query = self._extract_query(item)
+            passages = self._extract_passages(item)
             error_type = item.get("error_type", "unknown")
             
             if not query:
+                print(f"Warning: Item {i} has no query field. Skipping.")
                 continue
                 
-            # Direct generation without multi-agent
             try:
                 start_time = time.time()
                 
@@ -185,7 +221,7 @@ Query: {query}
 Answer:"""
                 
                 response = client.chat.completions.create(
-                    model=model_name,
+                    model=full_model_uri,
                     messages=[{"role": "user", "content": prompt}],
                     temperature=0.3,
                     max_tokens=512,
@@ -196,7 +232,7 @@ Answer:"""
                 
                 answer = response.choices[0].message.content
                 
-                # Compute faithfulness
+                # Compute faithfulness using Verifier
                 verifier = Verifier(self.config_path)
                 verifier.set_model(model_name)
                 
@@ -230,10 +266,8 @@ Answer:"""
                 })
                 results["faithfulness_scores"].append(0.0)
                 
-            # Small delay to avoid rate limits
             time.sleep(0.1)
             
-        # Compute summary stats
         mean_faithfulness = sum(results["faithfulness_scores"]) / len(results["faithfulness_scores"]) if results["faithfulness_scores"] else 0
         pass_rate = results["pass_count"] / len(results["responses"]) if results["responses"] else 0
         mean_latency = sum(results["latencies"]) / len(results["latencies"]) if results["latencies"] else 0
@@ -260,10 +294,8 @@ Answer:"""
         print(f"\nRunning {config_name}")
         print(f"Model assignment: {model_assignment}")
         
-        # Initialize orchestrator
         orchestrator = Orchestrator(self.config_path)
         
-        # Set models for each agent
         if is_homogeneous:
             model_name = list(model_assignment.values())[0]
             orchestrator.set_model(model_name)
@@ -289,18 +321,20 @@ Answer:"""
             "latencies": [],
         }
         
-        for i, item in enumerate(tqdm(test_data[:limit] if limit else test_data)):
-            query = item.get("text", item.get("query", ""))
-            passages = item.get("passages", item.get("retrieved_passages", []))
+        data_iter = test_data[:limit] if limit else test_data
+        
+        for i, item in enumerate(tqdm(data_iter, desc=f"Multi-agent {config_name}")):
+            query = self._extract_query(item)
+            passages = self._extract_passages(item)
             error_type = item.get("error_type", "unknown")
             
             if not query:
+                print(f"Warning: Item {i} has no query field. Skipping.")
                 continue
                 
             try:
                 start_time = time.time()
                 
-                # Process through the full pipeline
                 result = orchestrator.process_query(
                     query=query,
                     retrieved_passages=passages[:5] if passages else [],
@@ -310,26 +344,21 @@ Answer:"""
                 latency = time.time() - start_time
                 results["latencies"].append(latency)
                 
-                # Extract results
                 status = result.get("status", "error")
                 answer = result.get("answer", "")
                 gatekeeper_result = result.get("gatekeeper", {})
                 verifier_result = result.get("verifier", {})
                 editor_metadata = result.get("editor", {})
                 
-                # Get faithfulness score
                 faithfulness = verifier_result.get("faithfulness", 0.0)
                 
-                # Count passes
                 if faithfulness >= self.FAITHFULNESS_THRESHOLD:
                     results["pass_count"] += 1
                     
-                # Track HITL triggers
                 if status == "hitl_required":
                     reason = result.get("reason", "unknown")
                     results["hitl_triggers"][reason] += 1
                     
-                # Track by error type
                 results["error_type_scores"][error_type].append(faithfulness)
                 
                 results["faithfulness_scores"].append(faithfulness)
@@ -358,7 +387,6 @@ Answer:"""
                 
             time.sleep(0.1)
             
-        # Compute summary stats
         mean_faithfulness = sum(results["faithfulness_scores"]) / len(results["faithfulness_scores"]) if results["faithfulness_scores"] else 0
         pass_rate = results["pass_count"] / len(results["responses"]) if results["responses"] else 0
         mean_latency = sum(results["latencies"]) / len(results["latencies"]) if results["latencies"] else 0
@@ -372,7 +400,6 @@ Answer:"""
             "hitl_triggers": dict(results["hitl_triggers"]),
         }
         
-        # Add HITL percentages
         total = results["summary"]["total_samples"]
         results["summary"]["hitl_percentage"] = {
             reason: (count / total * 100) if total > 0 else 0
@@ -385,7 +412,6 @@ Answer:"""
         return results
     
     def _std_dev(self, values: List[float]) -> float:
-        """Calculate standard deviation."""
         if not values:
             return 0.0
         mean = sum(values) / len(values)
@@ -397,49 +423,34 @@ Answer:"""
         test_data: List[Dict],
         sample_size: int = 500
     ) -> Dict[str, Any]:
-        """Run human validation sample."""
         print(f"\nRunning human validation on {sample_size} samples")
-        
-        validation_results = {
-            "samples": [],
-            "agreement": {},
-        }
-        
-        return validation_results
+        return {"samples": [], "agreement": {}}
     
     def run_all_evaluations(
         self,
         data_path: str,
-        mode: str = "full",  # "quick", "dev", or "full"
+        mode: str = "full",
         output_dir: str = "evaluation_results"
     ) -> None:
-        """Run all evaluation configurations."""
-        
-        # Set limits based on mode
         if mode == "quick":
             limit = 10
-            sample_size = 10
             print("\n" + "="*60)
             print("QUICK MODE: 10 samples for sanity testing")
             print("="*60)
         elif mode == "dev":
             limit = 2000
-            sample_size = 200
             print("\n" + "="*60)
             print("DEV MODE: 2,000 samples for development")
             print("="*60)
-        else:  # full
-            limit = None  # Load all data
-            sample_size = 500
+        else:
+            limit = None
             print("\n" + "="*60)
-            print("FULL MODE: All 41,424 samples for final evaluation")
+            print("FULL MODE: All samples for final evaluation")
             print("="*60)
         
-        # Load test data
         test_data = self.load_test_data(data_path, limit)
         print(f"Loaded {len(test_data)} test samples")
         
-        # Create output directory
         os.makedirs(output_dir, exist_ok=True)
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         
@@ -460,7 +471,6 @@ Answer:"""
             "hitl_analysis": {},
         }
         
-        # 1. Run single-agent baselines
         print("\n" + "="*60)
         print("Running Single-Agent Baselines")
         print("="*60)
@@ -473,25 +483,20 @@ Answer:"""
             )
             results["single_agent"][model_key] = result
         
-        # 2. Run homogeneous multi-agent configurations
         print("\n" + "="*60)
         print("Running Homogeneous Multi-Agent Configurations")
         print("="*60)
         
         for model_key in ["qwen", "gpt-oss", "deepseek"]:
-            model_name = self.MODELS[model_key]
-            config_name = f"{model_key}-only"
-            
             result = self.run_multi_agent_configuration(
-                config_name=config_name,
+                config_name=f"{model_key}-only",
                 model_assignment={"gatekeeper": model_key, "verifier": model_key, "editor": model_key},
                 test_data=test_data,
                 is_homogeneous=True,
                 limit=limit
             )
-            results["homogeneous"][config_name] = result
+            results["homogeneous"][f"{model_key}-only"] = result
         
-        # 3. Run heterogeneous multi-agent configuration
         print("\n" + "="*60)
         print("Running Heterogeneous Multi-Agent Configuration")
         print("="*60)
@@ -510,7 +515,6 @@ Answer:"""
         )
         results["heterogeneous"]["best"] = result
         
-        # 4. Analyze by error type
         print("\n" + "="*60)
         print("Analyzing Performance by Error Type")
         print("="*60)
@@ -519,7 +523,6 @@ Answer:"""
         for error_type in self.ERROR_TYPES:
             error_type_results[error_type] = {}
             
-            # Extract from single agent results
             for model_key in ["qwen", "gpt-oss", "deepseek"]:
                 scores = []
                 for resp in results["single_agent"][model_key]["responses"]:
@@ -528,7 +531,6 @@ Answer:"""
                 if scores:
                     error_type_results[error_type][f"single_{model_key}"] = sum(scores) / len(scores)
             
-            # Extract from homogeneous results
             for model_key in ["qwen", "gpt-oss", "deepseek"]:
                 config_name = f"{model_key}-only"
                 scores = []
@@ -538,7 +540,6 @@ Answer:"""
                 if scores:
                     error_type_results[error_type][f"homogeneous_{model_key}"] = sum(scores) / len(scores)
             
-            # Extract from heterogeneous results
             scores = []
             for resp in results["heterogeneous"]["best"]["responses"]:
                 if resp.get("error_type") == error_type:
@@ -548,7 +549,6 @@ Answer:"""
         
         results["error_type_analysis"] = error_type_results
         
-        # 5. HITL Analysis
         print("\n" + "="*60)
         print("HITL Trigger Analysis")
         print("="*60)
@@ -567,7 +567,6 @@ Answer:"""
                 "total_percentage": sum(triggers.values()) / total * 100 if total > 0 else 0,
             }
         
-        # Heterogeneous HITL
         triggers = results["heterogeneous"]["best"]["summary"]["hitl_triggers"]
         total = results["heterogeneous"]["best"]["summary"]["total_samples"]
         hitl_results["heterogeneous"] = {
@@ -581,49 +580,39 @@ Answer:"""
         
         results["hitl_analysis"] = hitl_results
         
-        # 6. Latency analysis
         print("\n" + "="*60)
         print("Latency Analysis")
         print("="*60)
         
         latency_results = {}
-        
-        # Single-agent latencies
         for model_key in ["qwen", "gpt-oss", "deepseek"]:
             latency_results[f"single_{model_key}"] = {
                 "mean_latency": results["single_agent"][model_key]["summary"]["mean_latency"],
             }
         
-        # Homogeneous latencies
         for model_key in ["qwen", "gpt-oss", "deepseek"]:
             config_name = f"{model_key}-only"
             latency_results[f"homogeneous_{model_key}"] = {
                 "mean_latency": results["homogeneous"][config_name]["summary"]["mean_latency"],
             }
         
-        # Heterogeneous latency
         latency_results["heterogeneous"] = {
             "mean_latency": results["heterogeneous"]["best"]["summary"]["mean_latency"],
         }
         
         results["latency_analysis"] = latency_results
         
-        # 7. Save all results
         output_file = Path(output_dir) / f"evaluation_results_{mode}_{timestamp}.json"
         with open(output_file, "w") as f:
             json.dump(results, f, indent=2, default=str)
         
         print(f"\nResults saved to {output_file}")
-        
-        # Print summary table
         self._print_summary_table(results, mode)
         
     def _print_summary_table(self, results: Dict, mode: str) -> None:
-        """Print summary results table."""
         print("\n" + "="*80)
         print(f"SUMMARY RESULTS ({mode.upper()} MODE)")
         print("="*80)
-        
         print(f"\nTotal samples: {results['total_samples']}")
         
         print("\nSingle-Agent Baselines:")
@@ -651,20 +640,18 @@ Answer:"""
 
 
 def main():
-    """Main entry point."""
     import argparse
     
     parser = argparse.ArgumentParser(description="Run evaluation of multi-agent framework")
     parser.add_argument("--data", type=str, required=True, help="Path to test data JSON/JSONL")
     parser.add_argument("--output", type=str, default="evaluation_results", help="Output directory")
-    parser.add_argument("--mode", type=str, choices=["quick", "dev", "full"], default="full",
+    parser.add_argument("--mode", type=str, choices=["quick", "dev", "full"], default="quick",
                        help="Evaluation mode: quick (10 samples), dev (2,000 samples), full (all samples)")
     parser.add_argument("--config", type=str, default="config.yaml", help="Config file path")
     
     args = parser.parse_args()
     
     runner = EvaluationRunner(args.config)
-    
     runner.run_all_evaluations(
         data_path=args.data,
         mode=args.mode,

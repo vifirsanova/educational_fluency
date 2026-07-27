@@ -17,6 +17,9 @@ from typing import Any, Dict, List, Tuple
 import yaml
 from openai import OpenAI
 
+from dotenv import load_dotenv
+load_dotenv()
+
 
 class Verifier:
     """Fact-check a candidate response against retrieved passages."""

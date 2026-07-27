@@ -1,2 +1,5 @@
+PyYAML
+openai
 python-dotenv
-
+streamlit
+tqdm

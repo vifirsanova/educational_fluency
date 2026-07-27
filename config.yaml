@@ -1,0 +1,27 @@
+# config.yaml
+pipeline:
+  temperature: 0.3
+  max_tokens: 512
+
+gatekeeper:
+  confidence_threshold: 0.75
+  low_confidence_threshold: 0.50
+
+verifier:
+  faithfulness_threshold: 0.70
+
+editor:
+  max_sentences_low_confidence: 3
+  confidence_threshold_for_compression: 0.9
+  max_removal_percentage: 0.5
+
+models:
+  qwen:
+    name: "qwen3-235b-a22b-fp8/latest"
+    supports_reasoning: false
+  gpt-oss:
+    name: "gpt-oss-120b/latest"
+    supports_reasoning: false
+  deepseek:
+    name: "deepseek-v4-flash/latest"
+    supports_reasoning: false

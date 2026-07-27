@@ -15,11 +15,14 @@ from typing import Any, Dict, List, Optional, Tuple
 
 import yaml
 from openai import OpenAI
+from dotenv import load_dotenv
 
-# Import the agents
-from gatekeeper import Gatekeeper
-from verifier import Verifier
-from editor import Editor
+from src.agents.gatekeeper import Gatekeeper
+from src.agents.verifier import Verifier
+from src.agents.editor import Editor
+
+# Load environment variables from .env file
+load_dotenv()
 
 
 class Orchestrator:
@@ -29,7 +32,7 @@ class Orchestrator:
         with open(config_path, "r", encoding="utf-8") as file:
             self.config = yaml.safe_load(file)
 
-        # Try Yandex first, fall back to OpenRouter
+        # Get Yandex credentials from environment
         self.api_key = os.environ.get("YANDEX_API_KEY")
         self.folder_id = os.environ.get("YANDEX_FOLDER_ID")
         self.api_base = os.environ.get(
@@ -37,31 +40,26 @@ class Orchestrator:
             "https://api.yandexcloud.net/v1"
         )
         
-        # If Yandex credentials not found, try OpenRouter
-        if not self.api_key:
-            self.api_key = os.environ.get("OPENROUTER_API_KEY")
-            self.api_base = self.config["openrouter"]["base_url"]
-        
         if not self.api_key:
             raise ValueError(
-                "Neither YANDEX_API_KEY nor OPENROUTER_API_KEY "
-                "environment variable is set"
+                "YANDEX_API_KEY environment variable is not set. "
+                "Please set it in your .env file or export it."
+            )
+        
+        if not self.folder_id:
+            raise ValueError(
+                "YANDEX_FOLDER_ID environment variable is not set. "
+                "Please set it in your .env file or export it."
             )
 
-        # Initialize client with appropriate credentials
-        client_kwargs = {
-            "base_url": self.api_base,
-            "api_key": self.api_key,
-        }
-        
-        # Add Yandex-specific headers if using Yandex
-        if os.environ.get("YANDEX_API_KEY") and self.folder_id:
-            client_kwargs["default_headers"] = {
+        # Initialize OpenAI client with Yandex configuration
+        self.client = OpenAI(
+            base_url=self.api_base,
+            api_key=self.api_key,
+            default_headers={
                 "x-folder-id": self.folder_id,
-            }
-        
-        self.client = OpenAI(**client_kwargs)
-        self.is_yandex = bool(os.environ.get("YANDEX_API_KEY"))
+            },
+        )
 
         # Initialize agents
         self.gatekeeper = Gatekeeper(config_path)
@@ -69,8 +67,6 @@ class Orchestrator:
         self.editor = Editor(config_path)
 
         # Set models for each agent
-        # Use the orchestrator's model for all agents by default
-        # Can be overridden per agent
         self.default_model = None
         self.gatekeeper_model = None
         self.verifier_model = None
@@ -324,11 +320,6 @@ if __name__ == "__main__":
     # For Yandex, pass the model name directly
     orchestrator.set_model("gpt-oss-120b/latest")
     
-    # Or set different models for different agents
-    # orchestrator.set_gatekeeper_model("gpt-oss-120b/latest")
-    # orchestrator.set_verifier_model("llama3.1-405b/latest")
-    # orchestrator.set_editor_model("deepseek-v4-flash/latest")
-
     test_query = "What is natural selection?"
     test_passages = [
         (

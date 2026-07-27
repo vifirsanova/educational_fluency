@@ -16,6 +16,9 @@ from typing import Any, Dict, List, Optional, Tuple
 import yaml
 from openai import OpenAI
 
+from dotenv import load_dotenv
+load_dotenv()
+
 
 class Editor:
     """Conservatively edit an already verified response."""
