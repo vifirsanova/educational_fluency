@@ -1,0 +1,1288 @@
+{
+  "timestamp": "20260727_155036",
+  "mode": "quick",
+  "total_samples": 10,
+  "config": {
+    "confidence_threshold": 0.75,
+    "faithfulness_threshold": 0.7,
+    "low_confidence_threshold": 0.5,
+    "max_sentences_low_confidence": 3
+  },
+  "single_agent": {
+    "qwen": {
+      "model": "qwen3-235b-a22b-fp8/latest",
+      "responses": [
+        {
+          "query": "Title: Synchronization of active mechanical oscillators by an inertial load\n\nAbstract: Motivated by the operation of myogenic (self-oscillatory) insect flight muscle, we study a model consisting of a large number of identical oscillatory contractile elements joined in a chain, whose end is attached to a damped mass-spring oscillator. When the inertial load is small, the serial coupling favors an antisynchronous state in which the extension of one oscillator is compensated by the contraction of another, in order to preserve the total length. However, a sufficiently massive load can sychronize the oscillators and can even induce oscillation in situations where isolated elements would be stable. The system has a complex phase diagram displaying quiescent, synchronous and antisynchrononous phases, as well as an unsual asynchronous phase in which the total length of the chain oscillates at a different frequency from the individual active elements.",
+          "answer": "The study explores how an inertial load can synchronize a chain of identical active mechanical oscillators, inspired by insect flight muscle. With a small load, oscillators tend to be antisynchronous, maintaining constant total length. A large inertial load promotes synchronization and can induce oscillations even when individual elements are stable. The system exhibits quiescent, synchronous, antisynchronous, and an unusual asynchronous phase where the chain's oscillation frequency differs from that of individual elements.",
+          "faithfulness": 0.8,
+          "error_type": "Entity Replacement",
+          "verifier_result": {
+            "faithfulness": 0.8,
+            "total_claims": 5,
+            "supported_claims": 4,
+            "reason": "The claim about the study being inspired by insect flight muscle is unsupported; the evidence states it is motivated by myogenic mammalian flight muscle. All other claims are directly supported by the passage.",
+            "unsupported_claims": [
+              "The study explores how an inertial load can synchronize a chain of identical active mechanical oscillators, inspired by insect flight muscle."
+            ],
+            "evaluation_ok": true,
+            "requires_human_review": false
+          }
+        },
+        {
+          "query": "Title: Synchronization of active mechanical oscillators by an inertial load\n\nAbstract: Motivated by the operation of myogenic (self-oscillatory) insect flight muscle, we study a model consisting of a large number of identical oscillatory contractile elements joined in a chain, whose end is attached to a damped mass-spring oscillator. When the inertial load is small, the serial coupling favors an antisynchronous state in which the extension of one oscillator is compensated by the contraction of another, in order to preserve the total length. However, a sufficiently massive load can sychronize the oscillators and can even induce oscillation in situations where isolated elements would be stable. The system has a complex phase diagram displaying quiescent, synchronous and antisynchrononous phases, as well as an unsual asynchronous phase in which the total length of the chain oscillates at a different frequency from the individual active elements.",
+          "answer": "A sufficiently large inertial load can synchronize active mechanical oscillators and induce oscillations even when individual elements are stable, contrasting with small loads that favor antisynchrony; the system exhibits quiescent, synchronous, antisynchronous, and asynchronous phases with differing oscillation frequencies.",
+          "faithfulness": 1.0,
+          "error_type": "Numerical Distortion",
+          "verifier_result": {
+            "faithfulness": 1.0,
+            "total_claims": 4,
+            "supported_claims": 4,
+            "reason": "All claims in the response are directly supported by the retrieved evidence: (1) a large inertial load can synchronize oscillators, (2) it can induce oscillations when individual elements are stable, (3) small loads favor antisynchrony, and (4) the system exhibits quiescent, synchronous, antisynchronous, and asynchronous phases with differing oscillation frequencies.",
+            "unsupported_claims": [],
+            "evaluation_ok": true,
+            "requires_human_review": false
+          }
+        },
+        {
+          "query": "Title: Synchronization of active mechanical oscillators by an inertial load\n\nAbstract: Motivated by the operation of myogenic (self-oscillatory) insect flight muscle, we study a model consisting of a large number of identical oscillatory contractile elements joined in a chain, whose end is attached to a damped mass-spring oscillator. When the inertial load is small, the serial coupling favors an antisynchronous state in which the extension of one oscillator is compensated by the contraction of another, in order to preserve the total length. However, a sufficiently massive load can sychronize the oscillators and can even induce oscillation in situations where isolated elements would be stable. The system has a complex phase diagram displaying quiescent, synchronous and antisynchrononous phases, as well as an unsual asynchronous phase in which the total length of the chain oscillates at a different frequency from the individual active elements.",
+          "answer": "The query presents a modified version of the original abstract with key contradictions: it claims a small inertial load favors an *antisynchronous* state and a massive load induces *synchronization* and oscillation, opposite to the original. Based on the original evidence, this is incorrect.\n\nCorrect answer:  \nA small inertial load favors a *synchronous* state, while a sufficiently massive load can *desynchronize* the oscillators and suppress oscillation. The system exhibits quiescent, synchronous, antisynchronous, and an unusual asynchronous phase.",
+          "faithfulness": 1.0,
+          "error_type": "Negation Flip",
+          "verifier_result": {
+            "faithfulness": 1.0,
+            "total_claims": 3,
+            "supported_claims": 3,
+            "reason": "All claims in the candidate response are directly supported by the retrieved evidence: a small inertial load favors a synchronous state, a massive load can desynchronize oscillators and suppress oscillation, and the system exhibits quiescent, synchronous, antisynchronous, and an unusual asynchronous phase.",
+            "unsupported_claims": [],
+            "evaluation_ok": true,
+            "requires_human_review": false
+          }
+        },
+        {
+          "query": "Title: Synchronization of active mechanical oscillators by an inertial load\n\nAbstract: Motivated by the operation of myogenic (self-oscillatory) insect flight muscle, we study a model consisting of a large number of identical oscillatory contractile elements joined in a chain, whose end is attached to a damped mass-spring oscillator. When the inertial load is small, the serial coupling favors an antisynchronous state in which the extension of one oscillator is compensated by the contraction of another, in order to preserve the total length. However, a sufficiently massive load can sychronize the oscillators and can even induce oscillation in situations where isolated elements would be stable. The system has a complex phase diagram displaying quiescent, synchronous and antisynchrononous phases, as well as an unsual asynchronous phase in which the total length of the chain oscillates at a different frequency from the individual active elements.",
+          "answer": "A sufficiently massive inertial load can synchronize active mechanical oscillators and induce oscillations even when individual elements are stable, contrasting with small loads that favor antisynchronous behavior. The system exhibits quiescent, synchronous, antisynchronous, and an unusual asynchronous phase where the chain's oscillation frequency differs from that of individual elements.",
+          "faithfulness": 1.0,
+          "error_type": "Temporal Confusion",
+          "verifier_result": {
+            "faithfulness": 1.0,
+            "total_claims": 4,
+            "supported_claims": 4,
+            "reason": "All claims in the candidate response are directly supported by the retrieved evidence: (1) a sufficiently massive load can synchronize oscillators, (2) it can induce oscillation when individual elements are stable, (3) small loads favor antisynchronous behavior, and (4) the system exhibits quiescent, synchronous, antisynchronous, and an unusual asynchronous phase with differing frequencies.",
+            "unsupported_claims": [],
+            "evaluation_ok": true,
+            "requires_human_review": false
+          }
+        },
+        {
+          "query": "Title: Synchronization of active mechanical oscillators by an inertial load\n\nAbstract: Motivated by the operation of myogenic (self-oscillatory) insect flight muscle, we study a model consisting of a large number of identical oscillatory contractile elements joined in a chain, whose end is attached to a damped mass-spring oscillator. When the inertial load is small, the serial coupling favors an antisynchronous state in which the extension of one oscillator is compensated by the contraction of another, in order to preserve the total length. However, a sufficiently massive load can sychronize the oscillators and can even induce oscillation in situations where isolated elements would be stable. The system has a complex phase diagram displaying quiescent, synchronous and antisynchrononous phases, as well as an unsual asynchronous phase in which the total length of the chain oscillates at a different frequency from the individual active elements.",
+          "answer": "A sufficiently massive inertial load synchronizes the oscillators and can induce oscillations even when isolated elements are stable, while a small load favors an antisynchronous state that preserves the total chain length. The system exhibits quiescent, synchronous, antisynchronous, and an unusual asynchronous phase with frequency mismatch.",
+          "faithfulness": 1.0,
+          "error_type": "Causal Reversal",
+          "verifier_result": {
+            "faithfulness": 1.0,
+            "total_claims": 4,
+            "supported_claims": 4,
+            "reason": "All claims in the candidate response are directly supported by the retrieved evidence: (1) a massive inertial load synchronizes oscillators and can induce oscillations in otherwise stable elements; (2) a small load favors antisynchrony; (3) the system exhibits quiescent, synchronous, and antisynchronous phases; (4) there is an unusual asynchronous phase with a frequency mismatch between the chain and individual elements.",
+            "unsupported_claims": [],
+            "evaluation_ok": true,
+            "requires_human_review": false
+          }
+        },
+        {
+          "query": "Title: Synchronization of active mechanical oscillators by an inertial load\n\nAbstract: Motivated by the operation of myogenic (self-oscillatory) insect flight muscle, we study a model consisting of a large number of identical oscillatory contractile elements joined in a chain, whose end is attached to a damped mass-spring oscillator. When the inertial load is small, the serial coupling favors an antisynchronous state in which the extension of one oscillator is compensated by the contraction of another, in order to preserve the total length. However, a sufficiently massive load can sychronize the oscillators and can even induce oscillation in situations where isolated elements would be stable. The system has a complex phase diagram displaying quiescent, synchronous and antisynchrononous phases, as well as an unsual asynchronous phase in which the total length of the chain oscillates at a different frequency from the individual active elements.",
+          "answer": "A sufficiently massive inertial load can synchronize active mechanical oscillators and induce oscillations even when individual elements are stable, leading to synchronous, antisynchronous, quiescent, and unusual asynchronous phases where the chain oscillates at a different frequency than its individual elements. This synchronization is supported by observations in insect flight muscle and biomimetic systems.",
+          "faithfulness": 1.0,
+          "error_type": "Plausible Fabrication",
+          "verifier_result": {
+            "faithfulness": 1.0,
+            "total_claims": 4,
+            "supported_claims": 4,
+            "reason": "All claims in the response are directly supported by the retrieved evidence: (1) a massive inertial load can synchronize oscillators and induce oscillations in otherwise stable elements; (2) the system exhibits synchronous, antisynchronous, quiescent, and unusual asynchronous phases; (3) in the asynchronous phase, the chain oscillates at a different frequency than individual elements; (4) experimental support comes from insect flight muscle and biomimetic systems.",
+            "unsupported_claims": [],
+            "evaluation_ok": true,
+            "requires_human_review": false
+          }
+        },
+        {
+          "query": "Title: Synchronization of active mechanical oscillators by an inertial load\n\nAbstract: Motivated by the operation of myogenic (self-oscillatory) insect flight muscle, we study a model consisting of a large number of identical oscillatory contractile elements joined in a chain, whose end is attached to a damped mass-spring oscillator. When the inertial load is small, the serial coupling favors an antisynchronous state in which the extension of one oscillator is compensated by the contraction of another, in order to preserve the total length. However, a sufficiently massive load can sychronize the oscillators and can even induce oscillation in situations where isolated elements would be stable. The system has a complex phase diagram displaying quiescent, synchronous and antisynchrononous phases, as well as an unsual asynchronous phase in which the total length of the chain oscillates at a different frequency from the individual active elements.",
+          "answer": "A sufficiently massive inertial load can synchronize active mechanical oscillators and induce oscillations even when individual elements are stable, leading to various phases including synchronous, antisynchronous, quiescent, and an unusual asynchronous phase where the chain's total length oscillates at a different frequency than the individual elements.",
+          "faithfulness": 1.0,
+          "error_type": "Oversimplification",
+          "verifier_result": {
+            "faithfulness": 1.0,
+            "total_claims": 4,
+            "supported_claims": 4,
+            "reason": "All claims in the response are directly supported by the retrieved evidence: (1) a sufficiently massive load can synchronize oscillators, (2) it can induce oscillation when individual elements are stable, (3) the system exhibits synchronous, antisynchronous, quiescent, and an unusual asynchronous phase, and (4) in the asynchronous phase, the total length oscillates at a different frequency than individual elements.",
+            "unsupported_claims": [],
+            "evaluation_ok": true,
+            "requires_human_review": false
+          }
+        },
+        {
+          "query": "Title: Synchronization of active mechanical oscillators by an inertial load\n\nAbstract: Motivated by the operation of myogenic (self-oscillatory) insect flight muscle, we study a model consisting of a large number of identical oscillatory contractile elements joined in a chain, whose end is attached to a damped mass-spring oscillator. When the inertial load is small, the serial coupling favors an antisynchronous state in which the extension of one oscillator is compensated by the contraction of another, in order to preserve the total length. However, a sufficiently massive load can sychronize the oscillators and can even induce oscillation in situations where isolated elements would be stable. The system has a complex phase diagram displaying quiescent, synchronous and antisynchrononous phases, as well as an unsual asynchronous phase in which the total length of the chain oscillates at a different frequency from the individual active elements.",
+          "answer": "A sufficiently massive inertial load can synchronize active mechanical oscillators and induce oscillations even when individual elements are stable, overcoming the antisynchronous state favored under small loads, leading to a complex phase diagram with quiescent, synchronous, antisynchronous, and asynchronous phases.",
+          "faithfulness": 1.0,
+          "error_type": "Citation Hallucination",
+          "verifier_result": {
+            "faithfulness": 1.0,
+            "total_claims": 4,
+            "supported_claims": 4,
+            "reason": "All claims in the candidate response are directly supported by the retrieved evidence: (1) a sufficiently massive load can synchronize oscillators, (2) it can induce oscillations when individual elements are stable, (3) small loads favor an antisynchronous state, and (4) the system exhibits a complex phase diagram with quiescent, synchronous, antisynchronous, and asynchronous phases.",
+            "unsupported_claims": [],
+            "evaluation_ok": true,
+            "requires_human_review": false
+          }
+        },
+        {
+          "query": "Title: Towards the Understanding of Stability Puzzles in Phage lambda\n\nAbstract: We discuss two aspects, the in vivo and in vitro difference and the modeling of noise, of integrative modeling of network dynamics in biology, using phage lambda as an example. We believe those two aspects have not been seriously considered, and the including of them may be enough to solve the outstanding stability and robustness puzzle of in gene regulatory network dynamics.",
+          "answer": "The study uses phage lambda as an example to explore the in vivo and in vitro differences and noise modeling in integrative network dynamics, suggesting these factors may resolve stability and robustness puzzles in gene regulatory networks.",
+          "faithfulness": 0.75,
+          "error_type": "Entity Replacement",
+          "verifier_result": {
+            "faithfulness": 0.75,
+            "total_claims": 4,
+            "supported_claims": 3,
+            "reason": "The candidate incorrectly states phage lambda instead of phage T7, which contradicts the evidence. The claims about in vivo and in vitro differences, noise modeling, and their relevance to stability and robustness puzzles are partially supported, though 'in vivo' is not mentioned in the evidence (only 'in silico' and 'in vitro').",
+            "unsupported_claims": [
+              "The study uses phage lambda as an example"
+            ],
+            "evaluation_ok": true,
+            "requires_human_review": false
+          }
+        },
+        {
+          "query": "Title: Towards the Understanding of Stability Puzzles in Phage lambda\n\nAbstract: We discuss two aspects, the in vivo and in vitro difference and the modeling of noise, of integrative modeling of network dynamics in biology, using phage lambda as an example. We believe those two aspects have not been seriously considered, and the including of them may be enough to solve the outstanding stability and robustness puzzle of in gene regulatory network dynamics.",
+          "answer": "The study highlights two underexplored aspects\u2014differences between in vivo and in vitro conditions, and noise modeling\u2014in the integrative modeling of biological network dynamics using phage lambda as a model. Incorporating these factors may resolve the long-standing stability and robustness puzzles in gene regulatory networks.",
+          "faithfulness": 1.0,
+          "error_type": "Numerical Distortion",
+          "verifier_result": {
+            "faithfulness": 1.0,
+            "total_claims": 3,
+            "supported_claims": 3,
+            "reason": "All claims in the response are directly supported by the retrieved evidence: (1) the study discusses differences between in vivo and in vitro conditions, (2) it addresses noise modeling in integrative modeling of biological network dynamics using phage lambda, and (3) incorporating these aspects may resolve stability and robustness puzzles in gene regulatory networks.",
+            "unsupported_claims": [],
+            "evaluation_ok": true,
+            "requires_human_review": false
+          }
+        }
+      ],
+      "faithfulness_scores": [
+        0.8,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        0.75,
+        1.0
+      ],
+      "pass_count": 10,
+      "latencies": [
+        3.1975433826446533,
+        1.7157628536224365,
+        5.488024473190308,
+        2.549189567565918,
+        2.1443560123443604,
+        2.5031027793884277,
+        3.671189069747925,
+        2.099701404571533,
+        1.3882012367248535,
+        2.080289602279663
+      ],
+      "summary": {
+        "mean_faithfulness": 0.9550000000000001,
+        "std_faithfulness": 0.09069178573608527,
+        "pass_rate": 1.0,
+        "total_samples": 10,
+        "mean_latency": 2.683736038208008
+      }
+    },
+    "gpt-oss": {
+      "model": "gpt-oss-120b/latest",
+      "responses": [
+        {
+          "query": "Title: Synchronization of active mechanical oscillators by an inertial load\n\nAbstract: Motivated by the operation of myogenic (self-oscillatory) insect flight muscle, we study a model consisting of a large number of identical oscillatory contractile elements joined in a chain, whose end is attached to a damped mass-spring oscillator. When the inertial load is small, the serial coupling favors an antisynchronous state in which the extension of one oscillator is compensated by the contraction of another, in order to preserve the total length. However, a sufficiently massive load can sychronize the oscillators and can even induce oscillation in situations where isolated elements would be stable. The system has a complex phase diagram displaying quiescent, synchronous and antisynchrononous phases, as well as an unsual asynchronous phase in which the total length of the chain oscillates at a different frequency from the individual active elements.",
+          "answer": "The paper models many identical self\u2011oscillating contractile elements linked in series and terminated by a damped inertial load (mass\u2011spring/pendulum). With a light load the serial coupling forces the elements into an antisynchronous state (one contracts while another extends, keeping total length constant). When the load is sufficiently massive it synchronizes the elements and can even trigger oscillations that isolated elements would not exhibit. The resulting phase diagram contains four regimes: a quiescent (no oscillation) state, a fully synchronous state, an antisynchronous state, and an unusual asynchronous state in which the chain\u2019s overall length oscillates at a frequency different from that of the individual active elements.",
+          "faithfulness": 0.0,
+          "error_type": "Entity Replacement",
+          "verifier_result": {
+            "faithfulness": 0.0,
+            "total_claims": 0,
+            "supported_claims": 0,
+            "reason": "Verifier evaluation failed: The Verifier returned no content",
+            "unsupported_claims": [
+              "The response could not be verified"
+            ],
+            "evaluation_ok": false,
+            "requires_human_review": true
+          }
+        },
+        {
+          "query": "Title: Synchronization of active mechanical oscillators by an inertial load\n\nAbstract: Motivated by the operation of myogenic (self-oscillatory) insect flight muscle, we study a model consisting of a large number of identical oscillatory contractile elements joined in a chain, whose end is attached to a damped mass-spring oscillator. When the inertial load is small, the serial coupling favors an antisynchronous state in which the extension of one oscillator is compensated by the contraction of another, in order to preserve the total length. However, a sufficiently massive load can sychronize the oscillators and can even induce oscillation in situations where isolated elements would be stable. The system has a complex phase diagram displaying quiescent, synchronous and antisynchrononous phases, as well as an unsual asynchronous phase in which the total length of the chain oscillates at a different frequency from the individual active elements.",
+          "answer": "The paper shows that attaching a sufficiently massive, damped mass\u2011spring load to a chain of many identical self\u2011oscillatory contractile elements can force the elements to synchronize (or even start oscillating when they would otherwise be stable). With a light load the serial coupling yields an antisynchronous state that keeps the total length constant, but a heavier load (~5\u202fkg) drives a transition to synchronous behavior. The system\u2019s phase diagram contains four regimes: quiescent, synchronous, antisynchronous, and an unusual asynchronous phase in which the chain\u2019s total length oscillates at a frequency different from that of the individual oscillators.",
+          "faithfulness": 0.0,
+          "error_type": "Numerical Distortion",
+          "verifier_result": {
+            "faithfulness": 0.0,
+            "total_claims": 0,
+            "supported_claims": 0,
+            "reason": "Verifier evaluation failed: The Verifier returned no content",
+            "unsupported_claims": [
+              "The response could not be verified"
+            ],
+            "evaluation_ok": false,
+            "requires_human_review": true
+          }
+        },
+        {
+          "query": "Title: Synchronization of active mechanical oscillators by an inertial load\n\nAbstract: Motivated by the operation of myogenic (self-oscillatory) insect flight muscle, we study a model consisting of a large number of identical oscillatory contractile elements joined in a chain, whose end is attached to a damped mass-spring oscillator. When the inertial load is small, the serial coupling favors an antisynchronous state in which the extension of one oscillator is compensated by the contraction of another, in order to preserve the total length. However, a sufficiently massive load can sychronize the oscillators and can even induce oscillation in situations where isolated elements would be stable. The system has a complex phase diagram displaying quiescent, synchronous and antisynchrononous phases, as well as an unsual asynchronous phase in which the total length of the chain oscillates at a different frequency from the individual active elements.",
+          "answer": "The evidence shows the opposite of what the query states:\n\n* **Small inertial load** \u2013 the serial coupling **favors a *synchronous* state** (extensions of some oscillators are compensated by contractions of others so the total length stays constant).  \n* **Large inertial load** \u2013 a sufficiently massive load **desynchronizes the oscillators** and can even suppress oscillations that would be stable in isolation.\n\nThus the query\u2019s description (small load \u2192 antisynchronous; large load \u2192 synchronizing) is inconsistent with the evidence. The correct description is: small load \u2192 synchronous, large load \u2192 desynchronizing (and possibly quiescent).",
+          "faithfulness": 0.0,
+          "error_type": "Negation Flip",
+          "verifier_result": {
+            "faithfulness": 0.0,
+            "total_claims": 0,
+            "supported_claims": 0,
+            "reason": "Verifier evaluation failed: The Verifier returned no content",
+            "unsupported_claims": [
+              "The response could not be verified"
+            ],
+            "evaluation_ok": false,
+            "requires_human_review": true
+          }
+        },
+        {
+          "query": "Title: Synchronization of active mechanical oscillators by an inertial load\n\nAbstract: Motivated by the operation of myogenic (self-oscillatory) insect flight muscle, we study a model consisting of a large number of identical oscillatory contractile elements joined in a chain, whose end is attached to a damped mass-spring oscillator. When the inertial load is small, the serial coupling favors an antisynchronous state in which the extension of one oscillator is compensated by the contraction of another, in order to preserve the total length. However, a sufficiently massive load can sychronize the oscillators and can even induce oscillation in situations where isolated elements would be stable. The system has a complex phase diagram displaying quiescent, synchronous and antisynchrononous phases, as well as an unsual asynchronous phase in which the total length of the chain oscillates at a different frequency from the individual active elements.",
+          "answer": "The study shows that a chain of identical self\u2011oscillating contractile elements coupled to a damped mass\u2011spring load exhibits several collective states. With a light load the serial coupling forces an **antisynchronous** mode (extensions of some elements are balanced by contractions of others, keeping total length constant). When the load is sufficiently massive, the inertial coupling **synchronizes** the elements and can even trigger oscillations that would not occur in isolated units. The system\u2019s phase diagram therefore contains four distinct regimes:  \n\n1. **Quiescent** (no oscillation),  \n2. **Synchronous** (all elements oscillate in phase),  \n3. **Antisynchronous** (pairwise opposite phases preserving total length), and  \n4. An **asynchronous** phase where the chain\u2019s overall length oscillates at a frequency different from that of the individual active elements.",
+          "faithfulness": 0.0,
+          "error_type": "Temporal Confusion",
+          "verifier_result": {
+            "faithfulness": 0.0,
+            "total_claims": 0,
+            "supported_claims": 0,
+            "reason": "Verifier evaluation failed: The Verifier returned no content",
+            "unsupported_claims": [
+              "The response could not be verified"
+            ],
+            "evaluation_ok": false,
+            "requires_human_review": true
+          }
+        },
+        {
+          "query": "Title: Synchronization of active mechanical oscillators by an inertial load\n\nAbstract: Motivated by the operation of myogenic (self-oscillatory) insect flight muscle, we study a model consisting of a large number of identical oscillatory contractile elements joined in a chain, whose end is attached to a damped mass-spring oscillator. When the inertial load is small, the serial coupling favors an antisynchronous state in which the extension of one oscillator is compensated by the contraction of another, in order to preserve the total length. However, a sufficiently massive load can sychronize the oscillators and can even induce oscillation in situations where isolated elements would be stable. The system has a complex phase diagram displaying quiescent, synchronous and antisynchrononous phases, as well as an unsual asynchronous phase in which the total length of the chain oscillates at a different frequency from the individual active elements.",
+          "answer": "The study shows that a light inertial load promotes an antisynchronous state\u2014extensions of some contractile elements are balanced by contractions of others, keeping the chain\u2019s total length constant. In contrast, a sufficiently massive load couples the elements strongly enough to synchronize them, even triggering oscillations in units that would be stable in isolation. Consequently the system displays a rich phase diagram with four regimes: quiescent, synchronous, antisynchronous, and an unusual asynchronous phase in which the overall chain length oscillates at a frequency different from that of the individual active elements.",
+          "faithfulness": 0.0,
+          "error_type": "Causal Reversal",
+          "verifier_result": {
+            "faithfulness": 0.0,
+            "total_claims": 0,
+            "supported_claims": 0,
+            "reason": "Verifier evaluation failed: The Verifier returned no content",
+            "unsupported_claims": [
+              "The response could not be verified"
+            ],
+            "evaluation_ok": false,
+            "requires_human_review": true
+          }
+        },
+        {
+          "query": "Title: Synchronization of active mechanical oscillators by an inertial load\n\nAbstract: Motivated by the operation of myogenic (self-oscillatory) insect flight muscle, we study a model consisting of a large number of identical oscillatory contractile elements joined in a chain, whose end is attached to a damped mass-spring oscillator. When the inertial load is small, the serial coupling favors an antisynchronous state in which the extension of one oscillator is compensated by the contraction of another, in order to preserve the total length. However, a sufficiently massive load can sychronize the oscillators and can even induce oscillation in situations where isolated elements would be stable. The system has a complex phase diagram displaying quiescent, synchronous and antisynchrononous phases, as well as an unsual asynchronous phase in which the total length of the chain oscillates at a different frequency from the individual active elements.",
+          "answer": "The paper shows that attaching a damped mass\u2011spring load to a chain of identical self\u2011oscillatory contractile elements can dramatically change their collective dynamics. With a light load the serial coupling forces the elements into an **antisynchronous** state (one contracts while another extends, keeping total length constant). When the load mass exceeds a threshold, the load **synchronizes** the elements, even driving oscillations in units that would be stable in isolation. The system\u2019s phase diagram therefore contains four distinct regimes:\n\n1. **Quiescent** \u2013 no oscillations.  \n2. **Synchronous** \u2013 all elements oscillate in phase with the load.  \n3. **Antisynchronous** \u2013 extensions and contractions cancel each other.  \n4. **Asynchronous** \u2013 the chain\u2019s total length oscillates at a frequency different from that of the individual elements.\n\nExperimental data from beetle asynchronous muscle fibers and synthetic biomimetic filaments confirm the predicted synchronization threshold under high inertial loading.",
+          "faithfulness": 0.0,
+          "error_type": "Plausible Fabrication",
+          "verifier_result": {
+            "faithfulness": 0.0,
+            "total_claims": 0,
+            "supported_claims": 0,
+            "reason": "Verifier evaluation failed: The Verifier returned no content",
+            "unsupported_claims": [
+              "The response could not be verified"
+            ],
+            "evaluation_ok": false,
+            "requires_human_review": true
+          }
+        },
+        {
+          "query": "Title: Synchronization of active mechanical oscillators by an inertial load\n\nAbstract: Motivated by the operation of myogenic (self-oscillatory) insect flight muscle, we study a model consisting of a large number of identical oscillatory contractile elements joined in a chain, whose end is attached to a damped mass-spring oscillator. When the inertial load is small, the serial coupling favors an antisynchronous state in which the extension of one oscillator is compensated by the contraction of another, in order to preserve the total length. However, a sufficiently massive load can sychronize the oscillators and can even induce oscillation in situations where isolated elements would be stable. The system has a complex phase diagram displaying quiescent, synchronous and antisynchrononous phases, as well as an unsual asynchronous phase in which the total length of the chain oscillates at a different frequency from the individual active elements.",
+          "answer": "The paper shows that attaching a sufficiently massive, damped mass\u2011spring load to a chain of identical self\u2011oscillating contractile elements can force the elements to synchronize (or even start oscillating when they would otherwise be stable). Depending on the load\u2019s inertia the system displays four distinct regimes: a quiescent (no\u2011oscillation) state, a synchronous state, an antisynchronous state (neighboring elements move oppositely to keep total length constant), and an unusual asynchronous state in which the chain\u2019s overall length oscillates at a frequency different from that of the individual oscillators.",
+          "faithfulness": 0.0,
+          "error_type": "Oversimplification",
+          "verifier_result": {
+            "faithfulness": 0.0,
+            "total_claims": 0,
+            "supported_claims": 0,
+            "reason": "Verifier evaluation failed: The Verifier returned no content",
+            "unsupported_claims": [
+              "The response could not be verified"
+            ],
+            "evaluation_ok": false,
+            "requires_human_review": true
+          }
+        },
+        {
+          "query": "Title: Synchronization of active mechanical oscillators by an inertial load\n\nAbstract: Motivated by the operation of myogenic (self-oscillatory) insect flight muscle, we study a model consisting of a large number of identical oscillatory contractile elements joined in a chain, whose end is attached to a damped mass-spring oscillator. When the inertial load is small, the serial coupling favors an antisynchronous state in which the extension of one oscillator is compensated by the contraction of another, in order to preserve the total length. However, a sufficiently massive load can sychronize the oscillators and can even induce oscillation in situations where isolated elements would be stable. The system has a complex phase diagram displaying quiescent, synchronous and antisynchrononous phases, as well as an unsual asynchronous phase in which the total length of the chain oscillates at a different frequency from the individual active elements.",
+          "answer": "The paper shows that attaching a damped mass\u2011spring load to a chain of identical self\u2011oscillatory contractile elements dramatically changes their collective dynamics. With a light load the serial coupling forces the elements into an antisynchronous state (one contracts while another extends, keeping total length constant). When the load is sufficiently massive it synchronizes the oscillators, can even make otherwise stable elements start to oscillate, and creates a rich phase diagram that includes quiescent, synchronous, antisynchronous, and an unusual asynchronous regime in which the chain\u2019s total length oscillates at a frequency different from that of the individual elements.",
+          "faithfulness": 0.0,
+          "error_type": "Citation Hallucination",
+          "verifier_result": {
+            "faithfulness": 0.0,
+            "total_claims": 0,
+            "supported_claims": 0,
+            "reason": "Verifier evaluation failed: The Verifier returned no content",
+            "unsupported_claims": [
+              "The response could not be verified"
+            ],
+            "evaluation_ok": false,
+            "requires_human_review": true
+          }
+        },
+        {
+          "query": "Title: Towards the Understanding of Stability Puzzles in Phage lambda\n\nAbstract: We discuss two aspects, the in vivo and in vitro difference and the modeling of noise, of integrative modeling of network dynamics in biology, using phage lambda as an example. We believe those two aspects have not been seriously considered, and the including of them may be enough to solve the outstanding stability and robustness puzzle of in gene regulatory network dynamics.",
+          "answer": "The query is essentially a paraphrase of the evidence: it repeats the same two\u2011aspect argument (experimental\u2011vs\u2011theoretical differences and noise modeling) and the same claim that these have been overlooked, merely substituting \u201cphage\u202flambda\u201d for \u201cphage\u202fT7\u201d and \u201cin\u202fvivo\u201d for \u201cin\u202fsilico.\u201d In other words, it mirrors the original abstract with only minor wording changes.",
+          "faithfulness": 0.0,
+          "error_type": "Entity Replacement",
+          "verifier_result": {
+            "faithfulness": 0.0,
+            "total_claims": 0,
+            "supported_claims": 0,
+            "reason": "Verifier evaluation failed: The Verifier returned no content",
+            "unsupported_claims": [
+              "The response could not be verified"
+            ],
+            "evaluation_ok": false,
+            "requires_human_review": true
+          }
+        },
+        {
+          "query": "Title: Towards the Understanding of Stability Puzzles in Phage lambda\n\nAbstract: We discuss two aspects, the in vivo and in vitro difference and the modeling of noise, of integrative modeling of network dynamics in biology, using phage lambda as an example. We believe those two aspects have not been seriously considered, and the including of them may be enough to solve the outstanding stability and robustness puzzle of in gene regulatory network dynamics.",
+          "answer": "The paper argues that the long\u2011standing stability and robustness puzzles of the phage\u202f\u03bb gene\u2011regulatory network can be resolved by (1) explicitly accounting for the differences between in\u202fvivo and in\u202fvitro conditions and (2) incorporating realistic noise modeling into integrative network dynamics. By doing so, the authors claim the observed stability of the \u03bb switch can be explained.",
+          "faithfulness": 0.0,
+          "error_type": "Numerical Distortion",
+          "verifier_result": {
+            "faithfulness": 0.0,
+            "total_claims": 0,
+            "supported_claims": 0,
+            "reason": "Verifier evaluation failed: The Verifier returned no content",
+            "unsupported_claims": [
+              "The response could not be verified"
+            ],
+            "evaluation_ok": false,
+            "requires_human_review": true
+          }
+        }
+      ],
+      "faithfulness_scores": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "pass_count": 0,
+      "latencies": [
+        1.8271663188934326,
+        1.5667760372161865,
+        2.790081024169922,
+        2.6436009407043457,
+        1.6327459812164307,
+        2.6899216175079346,
+        1.6775686740875244,
+        1.818418025970459,
+        1.8199620246887207,
+        1.3138320446014404
+      ],
+      "summary": {
+        "mean_faithfulness": 0.0,
+        "std_faithfulness": 0.0,
+        "pass_rate": 0.0,
+        "total_samples": 10,
+        "mean_latency": 1.9780072689056396
+      }
+    },
+    "deepseek": {
+      "model": "deepseek-v4-flash/latest",
+      "responses": [
+        {
+          "query": "Title: Synchronization of active mechanical oscillators by an inertial load\n\nAbstract: Motivated by the operation of myogenic (self-oscillatory) insect flight muscle, we study a model consisting of a large number of identical oscillatory contractile elements joined in a chain, whose end is attached to a damped mass-spring oscillator. When the inertial load is small, the serial coupling favors an antisynchronous state in which the extension of one oscillator is compensated by the contraction of another, in order to preserve the total length. However, a sufficiently massive load can sychronize the oscillators and can even induce oscillation in situations where isolated elements would be stable. The system has a complex phase diagram displaying quiescent, synchronous and antisynchrononous phases, as well as an unsual asynchronous phase in which the total length of the chain oscillates at a different frequency from the individual active elements.",
+          "answer": "The query abstract incorrectly replaces \"mammalian flight muscle\" with \"insect flight muscle\" and \"damped pendulum\" with \"damped mass-spring oscillator\" compared to the evidence.",
+          "faithfulness": 0.0,
+          "error_type": "Entity Replacement",
+          "verifier_result": {
+            "faithfulness": 0.0,
+            "total_claims": 2,
+            "supported_claims": 0,
+            "reason": "The candidate response claims that the query abstract incorrectly replaces terms from the evidence, but the retrieved evidence does not contain the query abstract or any information about such replacements. Therefore, these claims are unsupported as they require external knowledge.",
+            "unsupported_claims": [
+              "The query abstract incorrectly replaces 'mammalian flight muscle' with 'insect flight muscle'",
+              "The query abstract incorrectly replaces 'damped pendulum' with 'damped mass-spring oscillator'"
+            ],
+            "evaluation_ok": true,
+            "requires_human_review": true
+          }
+        },
+        {
+          "query": "Title: Synchronization of active mechanical oscillators by an inertial load\n\nAbstract: Motivated by the operation of myogenic (self-oscillatory) insect flight muscle, we study a model consisting of a large number of identical oscillatory contractile elements joined in a chain, whose end is attached to a damped mass-spring oscillator. When the inertial load is small, the serial coupling favors an antisynchronous state in which the extension of one oscillator is compensated by the contraction of another, in order to preserve the total length. However, a sufficiently massive load can sychronize the oscillators and can even induce oscillation in situations where isolated elements would be stable. The system has a complex phase diagram displaying quiescent, synchronous and antisynchrononous phases, as well as an unsual asynchronous phase in which the total length of the chain oscillates at a different frequency from the individual active elements.",
+          "answer": "A sufficiently massive inertial load (about 5\u202fkg) can synchronize a chain of active mechanical oscillators and even induce oscillations where isolated elements would be stable, leading to a complex phase diagram with quiescent, synchronous, antisynchronous, and unusual asynchronous phases.",
+          "faithfulness": 1.0,
+          "error_type": "Numerical Distortion",
+          "verifier_result": {
+            "faithfulness": 1.0,
+            "total_claims": 3,
+            "supported_claims": 3,
+            "reason": "All factual claims in the candidate response are directly supported by the retrieved evidence.",
+            "unsupported_claims": [],
+            "evaluation_ok": true,
+            "requires_human_review": false
+          }
+        },
+        {
+          "query": "Title: Synchronization of active mechanical oscillators by an inertial load\n\nAbstract: Motivated by the operation of myogenic (self-oscillatory) insect flight muscle, we study a model consisting of a large number of identical oscillatory contractile elements joined in a chain, whose end is attached to a damped mass-spring oscillator. When the inertial load is small, the serial coupling favors an antisynchronous state in which the extension of one oscillator is compensated by the contraction of another, in order to preserve the total length. However, a sufficiently massive load can sychronize the oscillators and can even induce oscillation in situations where isolated elements would be stable. The system has a complex phase diagram displaying quiescent, synchronous and antisynchrononous phases, as well as an unsual asynchronous phase in which the total length of the chain oscillates at a different frequency from the individual active elements.",
+          "answer": "The query contains inaccuracies. According to the evidence, a small inertial load favors a synchronous state, not an antisynchronous one, and a sufficiently massive load desynchronizes oscillators and can suppress oscillation, rather than synchronizing or inducing oscillation.",
+          "faithfulness": 0.0,
+          "error_type": "Negation Flip",
+          "verifier_result": {
+            "faithfulness": 0.0,
+            "total_claims": 0,
+            "supported_claims": 0,
+            "reason": "Verifier evaluation failed: The Verifier returned no content",
+            "unsupported_claims": [
+              "The response could not be verified"
+            ],
+            "evaluation_ok": false,
+            "requires_human_review": true
+          }
+        },
+        {
+          "query": "Title: Synchronization of active mechanical oscillators by an inertial load\n\nAbstract: Motivated by the operation of myogenic (self-oscillatory) insect flight muscle, we study a model consisting of a large number of identical oscillatory contractile elements joined in a chain, whose end is attached to a damped mass-spring oscillator. When the inertial load is small, the serial coupling favors an antisynchronous state in which the extension of one oscillator is compensated by the contraction of another, in order to preserve the total length. However, a sufficiently massive load can sychronize the oscillators and can even induce oscillation in situations where isolated elements would be stable. The system has a complex phase diagram displaying quiescent, synchronous and antisynchrononous phases, as well as an unsual asynchronous phase in which the total length of the chain oscillates at a different frequency from the individual active elements.",
+          "answer": "A small inertial load favors antisynchronization, while a sufficiently massive load synchronizes the oscillators and can induce oscillation. The system exhibits quiescent, synchronous, antisynchronous, and asynchronous phases.",
+          "faithfulness": 1.0,
+          "error_type": "Temporal Confusion",
+          "verifier_result": {
+            "faithfulness": 1.0,
+            "total_claims": 4,
+            "supported_claims": 4,
+            "reason": "All factual claims in the candidate response are directly supported by the retrieved evidence.",
+            "unsupported_claims": [],
+            "evaluation_ok": true,
+            "requires_human_review": false
+          }
+        },
+        {
+          "query": "Title: Synchronization of active mechanical oscillators by an inertial load\n\nAbstract: Motivated by the operation of myogenic (self-oscillatory) insect flight muscle, we study a model consisting of a large number of identical oscillatory contractile elements joined in a chain, whose end is attached to a damped mass-spring oscillator. When the inertial load is small, the serial coupling favors an antisynchronous state in which the extension of one oscillator is compensated by the contraction of another, in order to preserve the total length. However, a sufficiently massive load can sychronize the oscillators and can even induce oscillation in situations where isolated elements would be stable. The system has a complex phase diagram displaying quiescent, synchronous and antisynchrononous phases, as well as an unsual asynchronous phase in which the total length of the chain oscillates at a different frequency from the individual active elements.",
+          "answer": "The model shows that a small inertial load favors an antisynchronous state, while a sufficiently massive load synchronizes the oscillators and can induce oscillations even when isolated elements are stable. The system exhibits quiescent, synchronous, antisynchronous, and asynchronous phases.",
+          "faithfulness": 0.0,
+          "error_type": "Causal Reversal",
+          "verifier_result": {
+            "faithfulness": 0.0,
+            "total_claims": 0,
+            "supported_claims": 0,
+            "reason": "Verifier evaluation failed: The Verifier returned no content",
+            "unsupported_claims": [
+              "The response could not be verified"
+            ],
+            "evaluation_ok": false,
+            "requires_human_review": true
+          }
+        },
+        {
+          "query": "Title: Synchronization of active mechanical oscillators by an inertial load\n\nAbstract: Motivated by the operation of myogenic (self-oscillatory) insect flight muscle, we study a model consisting of a large number of identical oscillatory contractile elements joined in a chain, whose end is attached to a damped mass-spring oscillator. When the inertial load is small, the serial coupling favors an antisynchronous state in which the extension of one oscillator is compensated by the contraction of another, in order to preserve the total length. However, a sufficiently massive load can sychronize the oscillators and can even induce oscillation in situations where isolated elements would be stable. The system has a complex phase diagram displaying quiescent, synchronous and antisynchrononous phases, as well as an unsual asynchronous phase in which the total length of the chain oscillates at a different frequency from the individual active elements.",
+          "answer": "The model shows that a small inertial load favors antisynchronization, while a sufficiently massive load synchronizes the oscillators and can induce oscillations. The system exhibits quiescent, synchronous, antisynchronous, and asynchronous phases.",
+          "faithfulness": 1.0,
+          "error_type": "Plausible Fabrication",
+          "verifier_result": {
+            "faithfulness": 1.0,
+            "total_claims": 4,
+            "supported_claims": 4,
+            "reason": "All factual claims in the candidate response are directly supported by the retrieved evidence.",
+            "unsupported_claims": [],
+            "evaluation_ok": true,
+            "requires_human_review": false
+          }
+        },
+        {
+          "query": "Title: Synchronization of active mechanical oscillators by an inertial load\n\nAbstract: Motivated by the operation of myogenic (self-oscillatory) insect flight muscle, we study a model consisting of a large number of identical oscillatory contractile elements joined in a chain, whose end is attached to a damped mass-spring oscillator. When the inertial load is small, the serial coupling favors an antisynchronous state in which the extension of one oscillator is compensated by the contraction of another, in order to preserve the total length. However, a sufficiently massive load can sychronize the oscillators and can even induce oscillation in situations where isolated elements would be stable. The system has a complex phase diagram displaying quiescent, synchronous and antisynchrononous phases, as well as an unsual asynchronous phase in which the total length of the chain oscillates at a different frequency from the individual active elements.",
+          "answer": "The model shows that a sufficiently massive inertial load can synchronize active mechanical oscillators and induce oscillations, while a small load favors antisynchrony. The system exhibits quiescent, synchronous, antisynchronous, and asynchronous phases.",
+          "faithfulness": 1.0,
+          "error_type": "Oversimplification",
+          "verifier_result": {
+            "faithfulness": 1.0,
+            "total_claims": 4,
+            "supported_claims": 4,
+            "reason": "All factual claims in the candidate response are directly supported by the retrieved evidence.",
+            "unsupported_claims": [],
+            "evaluation_ok": true,
+            "requires_human_review": false
+          }
+        },
+        {
+          "query": "Title: Synchronization of active mechanical oscillators by an inertial load\n\nAbstract: Motivated by the operation of myogenic (self-oscillatory) insect flight muscle, we study a model consisting of a large number of identical oscillatory contractile elements joined in a chain, whose end is attached to a damped mass-spring oscillator. When the inertial load is small, the serial coupling favors an antisynchronous state in which the extension of one oscillator is compensated by the contraction of another, in order to preserve the total length. However, a sufficiently massive load can sychronize the oscillators and can even induce oscillation in situations where isolated elements would be stable. The system has a complex phase diagram displaying quiescent, synchronous and antisynchrononous phases, as well as an unsual asynchronous phase in which the total length of the chain oscillates at a different frequency from the individual active elements.",
+          "answer": "A small inertial load favors antisynchrony, while a sufficiently massive load synchronizes the oscillators and can induce oscillations in otherwise stable elements. The system exhibits quiescent, synchronous, antisynchronous, and an unusual asynchronous phase where the chain's total length oscillates at a different frequency than the individual elements.",
+          "faithfulness": 1.0,
+          "error_type": "Citation Hallucination",
+          "verifier_result": {
+            "faithfulness": 1.0,
+            "total_claims": 5,
+            "supported_claims": 5,
+            "reason": "All factual claims in the candidate response are directly supported by the retrieved evidence.",
+            "unsupported_claims": [],
+            "evaluation_ok": true,
+            "requires_human_review": false
+          }
+        },
+        {
+          "query": "Title: Towards the Understanding of Stability Puzzles in Phage lambda\n\nAbstract: We discuss two aspects, the in vivo and in vitro difference and the modeling of noise, of integrative modeling of network dynamics in biology, using phage lambda as an example. We believe those two aspects have not been seriously considered, and the including of them may be enough to solve the outstanding stability and robustness puzzle of in gene regulatory network dynamics.",
+          "answer": "The evidence discusses phage T7, not phage lambda, so it does not directly address the query.",
+          "faithfulness": 0.0,
+          "error_type": "Entity Replacement",
+          "verifier_result": {
+            "faithfulness": 0.0,
+            "total_claims": 0,
+            "supported_claims": 0,
+            "reason": "Verifier evaluation failed: The Verifier returned no content",
+            "unsupported_claims": [
+              "The response could not be verified"
+            ],
+            "evaluation_ok": false,
+            "requires_human_review": true
+          }
+        },
+        {
+          "query": "Title: Towards the Understanding of Stability Puzzles in Phage lambda\n\nAbstract: We discuss two aspects, the in vivo and in vitro difference and the modeling of noise, of integrative modeling of network dynamics in biology, using phage lambda as an example. We believe those two aspects have not been seriously considered, and the including of them may be enough to solve the outstanding stability and robustness puzzle of in gene regulatory network dynamics.",
+          "answer": "The abstract discusses two aspects\u2014in vivo vs. in vitro differences and noise modeling\u2014that have been overlooked in integrative modeling of network dynamics, and suggests that incorporating them could resolve the stability and robustness puzzle in gene regulatory networks, using phage lambda as an example.",
+          "faithfulness": 1.0,
+          "error_type": "Numerical Distortion",
+          "verifier_result": {
+            "faithfulness": 1.0,
+            "total_claims": 4,
+            "supported_claims": 4,
+            "reason": "All factual claims in the candidate response are directly supported by the retrieved evidence.",
+            "unsupported_claims": [],
+            "evaluation_ok": true,
+            "requires_human_review": false
+          }
+        }
+      ],
+      "faithfulness_scores": [
+        0.0,
+        1.0,
+        0.0,
+        1.0,
+        0.0,
+        1.0,
+        1.0,
+        1.0,
+        0.0,
+        1.0
+      ],
+      "pass_count": 6,
+      "latencies": [
+        2.816138744354248,
+        2.0507431030273438,
+        3.369457960128784,
+        2.017188549041748,
+        2.4183080196380615,
+        2.3505213260650635,
+        2.2415308952331543,
+        2.1158721446990967,
+        4.675325870513916,
+        2.237213373184204
+      ],
+      "summary": {
+        "mean_faithfulness": 0.6,
+        "std_faithfulness": 0.48989794855663565,
+        "pass_rate": 0.6,
+        "total_samples": 10,
+        "mean_latency": 2.629229998588562
+      }
+    }
+  },
+  "homogeneous": {
+    "qwen-only": {
+      "config_name": "qwen-only",
+      "model_assignment": {
+        "gatekeeper": "qwen",
+        "verifier": "qwen",
+        "editor": "qwen"
+      },
+      "is_homogeneous": true,
+      "responses": [
+        {
+          "query": "Title: Synchronization of active mechanical oscillators by an inertial load\n\nAbstract: Motivated by the operation of myogenic (self-oscillatory) insect flight muscle, we study a model consisting of a large number of identical oscillatory contractile elements joined in a chain, whose end is attached to a damped mass-spring oscillator. When the inertial load is small, the serial coupling favors an antisynchronous state in which the extension of one oscillator is compensated by the contraction of another, in order to preserve the total length. However, a sufficiently massive load can sychronize the oscillators and can even induce oscillation in situations where isolated elements would be stable. The system has a complex phase diagram displaying quiescent, synchronous and antisynchrononous phases, as well as an unsual asynchronous phase in which the total length of the chain oscillates at a different frequency from the individual active elements.",
+          "answer": "",
+          "status": "error",
+          "faithfulness": 0.0,
+          "error_type": "Entity Replacement",
+          "error": "'NoneType' object has no attribute 'get'"
+        },
+        {
+          "query": "Title: Synchronization of active mechanical oscillators by an inertial load\n\nAbstract: Motivated by the operation of myogenic (self-oscillatory) insect flight muscle, we study a model consisting of a large number of identical oscillatory contractile elements joined in a chain, whose end is attached to a damped mass-spring oscillator. When the inertial load is small, the serial coupling favors an antisynchronous state in which the extension of one oscillator is compensated by the contraction of another, in order to preserve the total length. However, a sufficiently massive load can sychronize the oscillators and can even induce oscillation in situations where isolated elements would be stable. The system has a complex phase diagram displaying quiescent, synchronous and antisynchrononous phases, as well as an unsual asynchronous phase in which the total length of the chain oscillates at a different frequency from the individual active elements.",
+          "answer": "",
+          "status": "error",
+          "faithfulness": 0.0,
+          "error_type": "Numerical Distortion",
+          "error": "'NoneType' object has no attribute 'get'"
+        },
+        {
+          "query": "Title: Synchronization of active mechanical oscillators by an inertial load\n\nAbstract: Motivated by the operation of myogenic (self-oscillatory) insect flight muscle, we study a model consisting of a large number of identical oscillatory contractile elements joined in a chain, whose end is attached to a damped mass-spring oscillator. When the inertial load is small, the serial coupling favors an antisynchronous state in which the extension of one oscillator is compensated by the contraction of another, in order to preserve the total length. However, a sufficiently massive load can sychronize the oscillators and can even induce oscillation in situations where isolated elements would be stable. The system has a complex phase diagram displaying quiescent, synchronous and antisynchrononous phases, as well as an unsual asynchronous phase in which the total length of the chain oscillates at a different frequency from the individual active elements.",
+          "answer": "",
+          "status": "error",
+          "faithfulness": 0.0,
+          "error_type": "Negation Flip",
+          "error": "'NoneType' object has no attribute 'get'"
+        },
+        {
+          "query": "Title: Synchronization of active mechanical oscillators by an inertial load\n\nAbstract: Motivated by the operation of myogenic (self-oscillatory) insect flight muscle, we study a model consisting of a large number of identical oscillatory contractile elements joined in a chain, whose end is attached to a damped mass-spring oscillator. When the inertial load is small, the serial coupling favors an antisynchronous state in which the extension of one oscillator is compensated by the contraction of another, in order to preserve the total length. However, a sufficiently massive load can sychronize the oscillators and can even induce oscillation in situations where isolated elements would be stable. The system has a complex phase diagram displaying quiescent, synchronous and antisynchrononous phases, as well as an unsual asynchronous phase in which the total length of the chain oscillates at a different frequency from the individual active elements.",
+          "answer": "",
+          "status": "error",
+          "faithfulness": 0.0,
+          "error_type": "Temporal Confusion",
+          "error": "'NoneType' object has no attribute 'get'"
+        },
+        {
+          "query": "Title: Synchronization of active mechanical oscillators by an inertial load\n\nAbstract: Motivated by the operation of myogenic (self-oscillatory) insect flight muscle, we study a model consisting of a large number of identical oscillatory contractile elements joined in a chain, whose end is attached to a damped mass-spring oscillator. When the inertial load is small, the serial coupling favors an antisynchronous state in which the extension of one oscillator is compensated by the contraction of another, in order to preserve the total length. However, a sufficiently massive load can sychronize the oscillators and can even induce oscillation in situations where isolated elements would be stable. The system has a complex phase diagram displaying quiescent, synchronous and antisynchrononous phases, as well as an unsual asynchronous phase in which the total length of the chain oscillates at a different frequency from the individual active elements.",
+          "answer": "",
+          "status": "error",
+          "faithfulness": 0.0,
+          "error_type": "Causal Reversal",
+          "error": "'NoneType' object has no attribute 'get'"
+        },
+        {
+          "query": "Title: Synchronization of active mechanical oscillators by an inertial load\n\nAbstract: Motivated by the operation of myogenic (self-oscillatory) insect flight muscle, we study a model consisting of a large number of identical oscillatory contractile elements joined in a chain, whose end is attached to a damped mass-spring oscillator. When the inertial load is small, the serial coupling favors an antisynchronous state in which the extension of one oscillator is compensated by the contraction of another, in order to preserve the total length. However, a sufficiently massive load can sychronize the oscillators and can even induce oscillation in situations where isolated elements would be stable. The system has a complex phase diagram displaying quiescent, synchronous and antisynchrononous phases, as well as an unsual asynchronous phase in which the total length of the chain oscillates at a different frequency from the individual active elements.",
+          "answer": "",
+          "status": "error",
+          "faithfulness": 0.0,
+          "error_type": "Plausible Fabrication",
+          "error": "'NoneType' object has no attribute 'get'"
+        },
+        {
+          "query": "Title: Synchronization of active mechanical oscillators by an inertial load\n\nAbstract: Motivated by the operation of myogenic (self-oscillatory) insect flight muscle, we study a model consisting of a large number of identical oscillatory contractile elements joined in a chain, whose end is attached to a damped mass-spring oscillator. When the inertial load is small, the serial coupling favors an antisynchronous state in which the extension of one oscillator is compensated by the contraction of another, in order to preserve the total length. However, a sufficiently massive load can sychronize the oscillators and can even induce oscillation in situations where isolated elements would be stable. The system has a complex phase diagram displaying quiescent, synchronous and antisynchrononous phases, as well as an unsual asynchronous phase in which the total length of the chain oscillates at a different frequency from the individual active elements.",
+          "answer": "",
+          "status": "error",
+          "faithfulness": 0.0,
+          "error_type": "Oversimplification",
+          "error": "'NoneType' object has no attribute 'get'"
+        },
+        {
+          "query": "Title: Synchronization of active mechanical oscillators by an inertial load\n\nAbstract: Motivated by the operation of myogenic (self-oscillatory) insect flight muscle, we study a model consisting of a large number of identical oscillatory contractile elements joined in a chain, whose end is attached to a damped mass-spring oscillator. When the inertial load is small, the serial coupling favors an antisynchronous state in which the extension of one oscillator is compensated by the contraction of another, in order to preserve the total length. However, a sufficiently massive load can sychronize the oscillators and can even induce oscillation in situations where isolated elements would be stable. The system has a complex phase diagram displaying quiescent, synchronous and antisynchrononous phases, as well as an unsual asynchronous phase in which the total length of the chain oscillates at a different frequency from the individual active elements.",
+          "answer": "",
+          "status": "error",
+          "faithfulness": 0.0,
+          "error_type": "Citation Hallucination",
+          "error": "'NoneType' object has no attribute 'get'"
+        },
+        {
+          "query": "Title: Towards the Understanding of Stability Puzzles in Phage lambda\n\nAbstract: We discuss two aspects, the in vivo and in vitro difference and the modeling of noise, of integrative modeling of network dynamics in biology, using phage lambda as an example. We believe those two aspects have not been seriously considered, and the including of them may be enough to solve the outstanding stability and robustness puzzle of in gene regulatory network dynamics.",
+          "answer": "",
+          "status": "error",
+          "faithfulness": 0.0,
+          "error_type": "Entity Replacement",
+          "error": "'NoneType' object has no attribute 'get'"
+        },
+        {
+          "query": "Title: Towards the Understanding of Stability Puzzles in Phage lambda\n\nAbstract: We discuss two aspects, the in vivo and in vitro difference and the modeling of noise, of integrative modeling of network dynamics in biology, using phage lambda as an example. We believe those two aspects have not been seriously considered, and the including of them may be enough to solve the outstanding stability and robustness puzzle of in gene regulatory network dynamics.",
+          "answer": "",
+          "status": "error",
+          "faithfulness": 0.0,
+          "error_type": "Numerical Distortion",
+          "error": "'NoneType' object has no attribute 'get'"
+        }
+      ],
+      "faithfulness_scores": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "pass_count": 0,
+      "hitl_triggers": {},
+      "error_type_scores": {},
+      "latencies": [
+        0.1910405158996582,
+        0.06527519226074219,
+        0.06522870063781738,
+        0.06826591491699219,
+        0.06513857841491699,
+        0.06964325904846191,
+        0.06531810760498047,
+        0.07095074653625488,
+        0.06661200523376465,
+        0.0669550895690918
+      ],
+      "summary": {
+        "mean_faithfulness": 0.0,
+        "std_faithfulness": 0.0,
+        "pass_rate": 0.0,
+        "total_samples": 10,
+        "mean_latency": 0.07944281101226806,
+        "hitl_triggers": {},
+        "hitl_percentage": {},
+        "total_hitl_percentage": 0.0
+      }
+    },
+    "gpt-oss-only": {
+      "config_name": "gpt-oss-only",
+      "model_assignment": {
+        "gatekeeper": "gpt-oss",
+        "verifier": "gpt-oss",
+        "editor": "gpt-oss"
+      },
+      "is_homogeneous": true,
+      "responses": [
+        {
+          "query": "Title: Synchronization of active mechanical oscillators by an inertial load\n\nAbstract: Motivated by the operation of myogenic (self-oscillatory) insect flight muscle, we study a model consisting of a large number of identical oscillatory contractile elements joined in a chain, whose end is attached to a damped mass-spring oscillator. When the inertial load is small, the serial coupling favors an antisynchronous state in which the extension of one oscillator is compensated by the contraction of another, in order to preserve the total length. However, a sufficiently massive load can sychronize the oscillators and can even induce oscillation in situations where isolated elements would be stable. The system has a complex phase diagram displaying quiescent, synchronous and antisynchrononous phases, as well as an unsual asynchronous phase in which the total length of the chain oscillates at a different frequency from the individual active elements.",
+          "answer": "",
+          "status": "error",
+          "faithfulness": 0.0,
+          "error_type": "Entity Replacement",
+          "error": "'NoneType' object has no attribute 'get'"
+        },
+        {
+          "query": "Title: Synchronization of active mechanical oscillators by an inertial load\n\nAbstract: Motivated by the operation of myogenic (self-oscillatory) insect flight muscle, we study a model consisting of a large number of identical oscillatory contractile elements joined in a chain, whose end is attached to a damped mass-spring oscillator. When the inertial load is small, the serial coupling favors an antisynchronous state in which the extension of one oscillator is compensated by the contraction of another, in order to preserve the total length. However, a sufficiently massive load can sychronize the oscillators and can even induce oscillation in situations where isolated elements would be stable. The system has a complex phase diagram displaying quiescent, synchronous and antisynchrononous phases, as well as an unsual asynchronous phase in which the total length of the chain oscillates at a different frequency from the individual active elements.",
+          "answer": "",
+          "status": "error",
+          "faithfulness": 0.0,
+          "error_type": "Numerical Distortion",
+          "error": "'NoneType' object has no attribute 'get'"
+        },
+        {
+          "query": "Title: Synchronization of active mechanical oscillators by an inertial load\n\nAbstract: Motivated by the operation of myogenic (self-oscillatory) insect flight muscle, we study a model consisting of a large number of identical oscillatory contractile elements joined in a chain, whose end is attached to a damped mass-spring oscillator. When the inertial load is small, the serial coupling favors an antisynchronous state in which the extension of one oscillator is compensated by the contraction of another, in order to preserve the total length. However, a sufficiently massive load can sychronize the oscillators and can even induce oscillation in situations where isolated elements would be stable. The system has a complex phase diagram displaying quiescent, synchronous and antisynchrononous phases, as well as an unsual asynchronous phase in which the total length of the chain oscillates at a different frequency from the individual active elements.",
+          "answer": "",
+          "status": "error",
+          "faithfulness": 0.0,
+          "error_type": "Negation Flip",
+          "error": "'NoneType' object has no attribute 'get'"
+        },
+        {
+          "query": "Title: Synchronization of active mechanical oscillators by an inertial load\n\nAbstract: Motivated by the operation of myogenic (self-oscillatory) insect flight muscle, we study a model consisting of a large number of identical oscillatory contractile elements joined in a chain, whose end is attached to a damped mass-spring oscillator. When the inertial load is small, the serial coupling favors an antisynchronous state in which the extension of one oscillator is compensated by the contraction of another, in order to preserve the total length. However, a sufficiently massive load can sychronize the oscillators and can even induce oscillation in situations where isolated elements would be stable. The system has a complex phase diagram displaying quiescent, synchronous and antisynchrononous phases, as well as an unsual asynchronous phase in which the total length of the chain oscillates at a different frequency from the individual active elements.",
+          "answer": "",
+          "status": "error",
+          "faithfulness": 0.0,
+          "error_type": "Temporal Confusion",
+          "error": "'NoneType' object has no attribute 'get'"
+        },
+        {
+          "query": "Title: Synchronization of active mechanical oscillators by an inertial load\n\nAbstract: Motivated by the operation of myogenic (self-oscillatory) insect flight muscle, we study a model consisting of a large number of identical oscillatory contractile elements joined in a chain, whose end is attached to a damped mass-spring oscillator. When the inertial load is small, the serial coupling favors an antisynchronous state in which the extension of one oscillator is compensated by the contraction of another, in order to preserve the total length. However, a sufficiently massive load can sychronize the oscillators and can even induce oscillation in situations where isolated elements would be stable. The system has a complex phase diagram displaying quiescent, synchronous and antisynchrononous phases, as well as an unsual asynchronous phase in which the total length of the chain oscillates at a different frequency from the individual active elements.",
+          "answer": "",
+          "status": "error",
+          "faithfulness": 0.0,
+          "error_type": "Causal Reversal",
+          "error": "'NoneType' object has no attribute 'get'"
+        },
+        {
+          "query": "Title: Synchronization of active mechanical oscillators by an inertial load\n\nAbstract: Motivated by the operation of myogenic (self-oscillatory) insect flight muscle, we study a model consisting of a large number of identical oscillatory contractile elements joined in a chain, whose end is attached to a damped mass-spring oscillator. When the inertial load is small, the serial coupling favors an antisynchronous state in which the extension of one oscillator is compensated by the contraction of another, in order to preserve the total length. However, a sufficiently massive load can sychronize the oscillators and can even induce oscillation in situations where isolated elements would be stable. The system has a complex phase diagram displaying quiescent, synchronous and antisynchrononous phases, as well as an unsual asynchronous phase in which the total length of the chain oscillates at a different frequency from the individual active elements.",
+          "answer": "",
+          "status": "error",
+          "faithfulness": 0.0,
+          "error_type": "Plausible Fabrication",
+          "error": "'NoneType' object has no attribute 'get'"
+        },
+        {
+          "query": "Title: Synchronization of active mechanical oscillators by an inertial load\n\nAbstract: Motivated by the operation of myogenic (self-oscillatory) insect flight muscle, we study a model consisting of a large number of identical oscillatory contractile elements joined in a chain, whose end is attached to a damped mass-spring oscillator. When the inertial load is small, the serial coupling favors an antisynchronous state in which the extension of one oscillator is compensated by the contraction of another, in order to preserve the total length. However, a sufficiently massive load can sychronize the oscillators and can even induce oscillation in situations where isolated elements would be stable. The system has a complex phase diagram displaying quiescent, synchronous and antisynchrononous phases, as well as an unsual asynchronous phase in which the total length of the chain oscillates at a different frequency from the individual active elements.",
+          "answer": "",
+          "status": "error",
+          "faithfulness": 0.0,
+          "error_type": "Oversimplification",
+          "error": "'NoneType' object has no attribute 'get'"
+        },
+        {
+          "query": "Title: Synchronization of active mechanical oscillators by an inertial load\n\nAbstract: Motivated by the operation of myogenic (self-oscillatory) insect flight muscle, we study a model consisting of a large number of identical oscillatory contractile elements joined in a chain, whose end is attached to a damped mass-spring oscillator. When the inertial load is small, the serial coupling favors an antisynchronous state in which the extension of one oscillator is compensated by the contraction of another, in order to preserve the total length. However, a sufficiently massive load can sychronize the oscillators and can even induce oscillation in situations where isolated elements would be stable. The system has a complex phase diagram displaying quiescent, synchronous and antisynchrononous phases, as well as an unsual asynchronous phase in which the total length of the chain oscillates at a different frequency from the individual active elements.",
+          "answer": "",
+          "status": "error",
+          "faithfulness": 0.0,
+          "error_type": "Citation Hallucination",
+          "error": "'NoneType' object has no attribute 'get'"
+        },
+        {
+          "query": "Title: Towards the Understanding of Stability Puzzles in Phage lambda\n\nAbstract: We discuss two aspects, the in vivo and in vitro difference and the modeling of noise, of integrative modeling of network dynamics in biology, using phage lambda as an example. We believe those two aspects have not been seriously considered, and the including of them may be enough to solve the outstanding stability and robustness puzzle of in gene regulatory network dynamics.",
+          "answer": "",
+          "status": "error",
+          "faithfulness": 0.0,
+          "error_type": "Entity Replacement",
+          "error": "'NoneType' object has no attribute 'get'"
+        },
+        {
+          "query": "Title: Towards the Understanding of Stability Puzzles in Phage lambda\n\nAbstract: We discuss two aspects, the in vivo and in vitro difference and the modeling of noise, of integrative modeling of network dynamics in biology, using phage lambda as an example. We believe those two aspects have not been seriously considered, and the including of them may be enough to solve the outstanding stability and robustness puzzle of in gene regulatory network dynamics.",
+          "answer": "",
+          "status": "error",
+          "faithfulness": 0.0,
+          "error_type": "Numerical Distortion",
+          "error": "'NoneType' object has no attribute 'get'"
+        }
+      ],
+      "faithfulness_scores": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "pass_count": 0,
+      "hitl_triggers": {},
+      "error_type_scores": {},
+      "latencies": [
+        0.21296405792236328,
+        0.06926870346069336,
+        0.06870460510253906,
+        0.11807584762573242,
+        0.09017682075500488,
+        0.07347607612609863,
+        0.081756591796875,
+        0.07382082939147949,
+        0.08776688575744629,
+        0.07123446464538574
+      ],
+      "summary": {
+        "mean_faithfulness": 0.0,
+        "std_faithfulness": 0.0,
+        "pass_rate": 0.0,
+        "total_samples": 10,
+        "mean_latency": 0.09472448825836181,
+        "hitl_triggers": {},
+        "hitl_percentage": {},
+        "total_hitl_percentage": 0.0
+      }
+    },
+    "deepseek-only": {
+      "config_name": "deepseek-only",
+      "model_assignment": {
+        "gatekeeper": "deepseek",
+        "verifier": "deepseek",
+        "editor": "deepseek"
+      },
+      "is_homogeneous": true,
+      "responses": [
+        {
+          "query": "Title: Synchronization of active mechanical oscillators by an inertial load\n\nAbstract: Motivated by the operation of myogenic (self-oscillatory) insect flight muscle, we study a model consisting of a large number of identical oscillatory contractile elements joined in a chain, whose end is attached to a damped mass-spring oscillator. When the inertial load is small, the serial coupling favors an antisynchronous state in which the extension of one oscillator is compensated by the contraction of another, in order to preserve the total length. However, a sufficiently massive load can sychronize the oscillators and can even induce oscillation in situations where isolated elements would be stable. The system has a complex phase diagram displaying quiescent, synchronous and antisynchrononous phases, as well as an unsual asynchronous phase in which the total length of the chain oscillates at a different frequency from the individual active elements.",
+          "answer": "",
+          "status": "error",
+          "faithfulness": 0.0,
+          "error_type": "Entity Replacement",
+          "error": "'NoneType' object has no attribute 'get'"
+        },
+        {
+          "query": "Title: Synchronization of active mechanical oscillators by an inertial load\n\nAbstract: Motivated by the operation of myogenic (self-oscillatory) insect flight muscle, we study a model consisting of a large number of identical oscillatory contractile elements joined in a chain, whose end is attached to a damped mass-spring oscillator. When the inertial load is small, the serial coupling favors an antisynchronous state in which the extension of one oscillator is compensated by the contraction of another, in order to preserve the total length. However, a sufficiently massive load can sychronize the oscillators and can even induce oscillation in situations where isolated elements would be stable. The system has a complex phase diagram displaying quiescent, synchronous and antisynchrononous phases, as well as an unsual asynchronous phase in which the total length of the chain oscillates at a different frequency from the individual active elements.",
+          "answer": "",
+          "status": "error",
+          "faithfulness": 0.0,
+          "error_type": "Numerical Distortion",
+          "error": "'NoneType' object has no attribute 'get'"
+        },
+        {
+          "query": "Title: Synchronization of active mechanical oscillators by an inertial load\n\nAbstract: Motivated by the operation of myogenic (self-oscillatory) insect flight muscle, we study a model consisting of a large number of identical oscillatory contractile elements joined in a chain, whose end is attached to a damped mass-spring oscillator. When the inertial load is small, the serial coupling favors an antisynchronous state in which the extension of one oscillator is compensated by the contraction of another, in order to preserve the total length. However, a sufficiently massive load can sychronize the oscillators and can even induce oscillation in situations where isolated elements would be stable. The system has a complex phase diagram displaying quiescent, synchronous and antisynchrononous phases, as well as an unsual asynchronous phase in which the total length of the chain oscillates at a different frequency from the individual active elements.",
+          "answer": "",
+          "status": "error",
+          "faithfulness": 0.0,
+          "error_type": "Negation Flip",
+          "error": "'NoneType' object has no attribute 'get'"
+        },
+        {
+          "query": "Title: Synchronization of active mechanical oscillators by an inertial load\n\nAbstract: Motivated by the operation of myogenic (self-oscillatory) insect flight muscle, we study a model consisting of a large number of identical oscillatory contractile elements joined in a chain, whose end is attached to a damped mass-spring oscillator. When the inertial load is small, the serial coupling favors an antisynchronous state in which the extension of one oscillator is compensated by the contraction of another, in order to preserve the total length. However, a sufficiently massive load can sychronize the oscillators and can even induce oscillation in situations where isolated elements would be stable. The system has a complex phase diagram displaying quiescent, synchronous and antisynchrononous phases, as well as an unsual asynchronous phase in which the total length of the chain oscillates at a different frequency from the individual active elements.",
+          "answer": "",
+          "status": "error",
+          "faithfulness": 0.0,
+          "error_type": "Temporal Confusion",
+          "error": "'NoneType' object has no attribute 'get'"
+        },
+        {
+          "query": "Title: Synchronization of active mechanical oscillators by an inertial load\n\nAbstract: Motivated by the operation of myogenic (self-oscillatory) insect flight muscle, we study a model consisting of a large number of identical oscillatory contractile elements joined in a chain, whose end is attached to a damped mass-spring oscillator. When the inertial load is small, the serial coupling favors an antisynchronous state in which the extension of one oscillator is compensated by the contraction of another, in order to preserve the total length. However, a sufficiently massive load can sychronize the oscillators and can even induce oscillation in situations where isolated elements would be stable. The system has a complex phase diagram displaying quiescent, synchronous and antisynchrononous phases, as well as an unsual asynchronous phase in which the total length of the chain oscillates at a different frequency from the individual active elements.",
+          "answer": "",
+          "status": "error",
+          "faithfulness": 0.0,
+          "error_type": "Causal Reversal",
+          "error": "'NoneType' object has no attribute 'get'"
+        },
+        {
+          "query": "Title: Synchronization of active mechanical oscillators by an inertial load\n\nAbstract: Motivated by the operation of myogenic (self-oscillatory) insect flight muscle, we study a model consisting of a large number of identical oscillatory contractile elements joined in a chain, whose end is attached to a damped mass-spring oscillator. When the inertial load is small, the serial coupling favors an antisynchronous state in which the extension of one oscillator is compensated by the contraction of another, in order to preserve the total length. However, a sufficiently massive load can sychronize the oscillators and can even induce oscillation in situations where isolated elements would be stable. The system has a complex phase diagram displaying quiescent, synchronous and antisynchrononous phases, as well as an unsual asynchronous phase in which the total length of the chain oscillates at a different frequency from the individual active elements.",
+          "answer": "",
+          "status": "error",
+          "faithfulness": 0.0,
+          "error_type": "Plausible Fabrication",
+          "error": "'NoneType' object has no attribute 'get'"
+        },
+        {
+          "query": "Title: Synchronization of active mechanical oscillators by an inertial load\n\nAbstract: Motivated by the operation of myogenic (self-oscillatory) insect flight muscle, we study a model consisting of a large number of identical oscillatory contractile elements joined in a chain, whose end is attached to a damped mass-spring oscillator. When the inertial load is small, the serial coupling favors an antisynchronous state in which the extension of one oscillator is compensated by the contraction of another, in order to preserve the total length. However, a sufficiently massive load can sychronize the oscillators and can even induce oscillation in situations where isolated elements would be stable. The system has a complex phase diagram displaying quiescent, synchronous and antisynchrononous phases, as well as an unsual asynchronous phase in which the total length of the chain oscillates at a different frequency from the individual active elements.",
+          "answer": "",
+          "status": "error",
+          "faithfulness": 0.0,
+          "error_type": "Oversimplification",
+          "error": "'NoneType' object has no attribute 'get'"
+        },
+        {
+          "query": "Title: Synchronization of active mechanical oscillators by an inertial load\n\nAbstract: Motivated by the operation of myogenic (self-oscillatory) insect flight muscle, we study a model consisting of a large number of identical oscillatory contractile elements joined in a chain, whose end is attached to a damped mass-spring oscillator. When the inertial load is small, the serial coupling favors an antisynchronous state in which the extension of one oscillator is compensated by the contraction of another, in order to preserve the total length. However, a sufficiently massive load can sychronize the oscillators and can even induce oscillation in situations where isolated elements would be stable. The system has a complex phase diagram displaying quiescent, synchronous and antisynchrononous phases, as well as an unsual asynchronous phase in which the total length of the chain oscillates at a different frequency from the individual active elements.",
+          "answer": "",
+          "status": "error",
+          "faithfulness": 0.0,
+          "error_type": "Citation Hallucination",
+          "error": "'NoneType' object has no attribute 'get'"
+        },
+        {
+          "query": "Title: Towards the Understanding of Stability Puzzles in Phage lambda\n\nAbstract: We discuss two aspects, the in vivo and in vitro difference and the modeling of noise, of integrative modeling of network dynamics in biology, using phage lambda as an example. We believe those two aspects have not been seriously considered, and the including of them may be enough to solve the outstanding stability and robustness puzzle of in gene regulatory network dynamics.",
+          "answer": "",
+          "status": "error",
+          "faithfulness": 0.0,
+          "error_type": "Entity Replacement",
+          "error": "'NoneType' object has no attribute 'get'"
+        },
+        {
+          "query": "Title: Towards the Understanding of Stability Puzzles in Phage lambda\n\nAbstract: We discuss two aspects, the in vivo and in vitro difference and the modeling of noise, of integrative modeling of network dynamics in biology, using phage lambda as an example. We believe those two aspects have not been seriously considered, and the including of them may be enough to solve the outstanding stability and robustness puzzle of in gene regulatory network dynamics.",
+          "answer": "",
+          "status": "error",
+          "faithfulness": 0.0,
+          "error_type": "Numerical Distortion",
+          "error": "'NoneType' object has no attribute 'get'"
+        }
+      ],
+      "faithfulness_scores": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "pass_count": 0,
+      "hitl_triggers": {},
+      "error_type_scores": {},
+      "latencies": [
+        0.19119977951049805,
+        0.06840324401855469,
+        0.07597899436950684,
+        0.08254599571228027,
+        0.10101532936096191,
+        0.08051109313964844,
+        0.0777902603149414,
+        0.06868886947631836,
+        0.07501435279846191,
+        0.06790614128112793
+      ],
+      "summary": {
+        "mean_faithfulness": 0.0,
+        "std_faithfulness": 0.0,
+        "pass_rate": 0.0,
+        "total_samples": 10,
+        "mean_latency": 0.08890540599822998,
+        "hitl_triggers": {},
+        "hitl_percentage": {},
+        "total_hitl_percentage": 0.0
+      }
+    }
+  },
+  "heterogeneous": {
+    "best": {
+      "config_name": "heterogeneous",
+      "model_assignment": {
+        "gatekeeper": "deepseek",
+        "verifier": "qwen",
+        "editor": "gpt-oss"
+      },
+      "is_homogeneous": false,
+      "responses": [
+        {
+          "query": "Title: Synchronization of active mechanical oscillators by an inertial load\n\nAbstract: Motivated by the operation of myogenic (self-oscillatory) insect flight muscle, we study a model consisting of a large number of identical oscillatory contractile elements joined in a chain, whose end is attached to a damped mass-spring oscillator. When the inertial load is small, the serial coupling favors an antisynchronous state in which the extension of one oscillator is compensated by the contraction of another, in order to preserve the total length. However, a sufficiently massive load can sychronize the oscillators and can even induce oscillation in situations where isolated elements would be stable. The system has a complex phase diagram displaying quiescent, synchronous and antisynchrononous phases, as well as an unsual asynchronous phase in which the total length of the chain oscillates at a different frequency from the individual active elements.",
+          "answer": "",
+          "status": "error",
+          "faithfulness": 0.0,
+          "error_type": "Entity Replacement",
+          "error": "'NoneType' object has no attribute 'get'"
+        },
+        {
+          "query": "Title: Synchronization of active mechanical oscillators by an inertial load\n\nAbstract: Motivated by the operation of myogenic (self-oscillatory) insect flight muscle, we study a model consisting of a large number of identical oscillatory contractile elements joined in a chain, whose end is attached to a damped mass-spring oscillator. When the inertial load is small, the serial coupling favors an antisynchronous state in which the extension of one oscillator is compensated by the contraction of another, in order to preserve the total length. However, a sufficiently massive load can sychronize the oscillators and can even induce oscillation in situations where isolated elements would be stable. The system has a complex phase diagram displaying quiescent, synchronous and antisynchrononous phases, as well as an unsual asynchronous phase in which the total length of the chain oscillates at a different frequency from the individual active elements.",
+          "answer": "",
+          "status": "error",
+          "faithfulness": 0.0,
+          "error_type": "Numerical Distortion",
+          "error": "'NoneType' object has no attribute 'get'"
+        },
+        {
+          "query": "Title: Synchronization of active mechanical oscillators by an inertial load\n\nAbstract: Motivated by the operation of myogenic (self-oscillatory) insect flight muscle, we study a model consisting of a large number of identical oscillatory contractile elements joined in a chain, whose end is attached to a damped mass-spring oscillator. When the inertial load is small, the serial coupling favors an antisynchronous state in which the extension of one oscillator is compensated by the contraction of another, in order to preserve the total length. However, a sufficiently massive load can sychronize the oscillators and can even induce oscillation in situations where isolated elements would be stable. The system has a complex phase diagram displaying quiescent, synchronous and antisynchrononous phases, as well as an unsual asynchronous phase in which the total length of the chain oscillates at a different frequency from the individual active elements.",
+          "answer": "",
+          "status": "error",
+          "faithfulness": 0.0,
+          "error_type": "Negation Flip",
+          "error": "'NoneType' object has no attribute 'get'"
+        },
+        {
+          "query": "Title: Synchronization of active mechanical oscillators by an inertial load\n\nAbstract: Motivated by the operation of myogenic (self-oscillatory) insect flight muscle, we study a model consisting of a large number of identical oscillatory contractile elements joined in a chain, whose end is attached to a damped mass-spring oscillator. When the inertial load is small, the serial coupling favors an antisynchronous state in which the extension of one oscillator is compensated by the contraction of another, in order to preserve the total length. However, a sufficiently massive load can sychronize the oscillators and can even induce oscillation in situations where isolated elements would be stable. The system has a complex phase diagram displaying quiescent, synchronous and antisynchrononous phases, as well as an unsual asynchronous phase in which the total length of the chain oscillates at a different frequency from the individual active elements.",
+          "answer": "",
+          "status": "error",
+          "faithfulness": 0.0,
+          "error_type": "Temporal Confusion",
+          "error": "'NoneType' object has no attribute 'get'"
+        },
+        {
+          "query": "Title: Synchronization of active mechanical oscillators by an inertial load\n\nAbstract: Motivated by the operation of myogenic (self-oscillatory) insect flight muscle, we study a model consisting of a large number of identical oscillatory contractile elements joined in a chain, whose end is attached to a damped mass-spring oscillator. When the inertial load is small, the serial coupling favors an antisynchronous state in which the extension of one oscillator is compensated by the contraction of another, in order to preserve the total length. However, a sufficiently massive load can sychronize the oscillators and can even induce oscillation in situations where isolated elements would be stable. The system has a complex phase diagram displaying quiescent, synchronous and antisynchrononous phases, as well as an unsual asynchronous phase in which the total length of the chain oscillates at a different frequency from the individual active elements.",
+          "answer": "",
+          "status": "error",
+          "faithfulness": 0.0,
+          "error_type": "Causal Reversal",
+          "error": "'NoneType' object has no attribute 'get'"
+        },
+        {
+          "query": "Title: Synchronization of active mechanical oscillators by an inertial load\n\nAbstract: Motivated by the operation of myogenic (self-oscillatory) insect flight muscle, we study a model consisting of a large number of identical oscillatory contractile elements joined in a chain, whose end is attached to a damped mass-spring oscillator. When the inertial load is small, the serial coupling favors an antisynchronous state in which the extension of one oscillator is compensated by the contraction of another, in order to preserve the total length. However, a sufficiently massive load can sychronize the oscillators and can even induce oscillation in situations where isolated elements would be stable. The system has a complex phase diagram displaying quiescent, synchronous and antisynchrononous phases, as well as an unsual asynchronous phase in which the total length of the chain oscillates at a different frequency from the individual active elements.",
+          "answer": "",
+          "status": "error",
+          "faithfulness": 0.0,
+          "error_type": "Plausible Fabrication",
+          "error": "'NoneType' object has no attribute 'get'"
+        },
+        {
+          "query": "Title: Synchronization of active mechanical oscillators by an inertial load\n\nAbstract: Motivated by the operation of myogenic (self-oscillatory) insect flight muscle, we study a model consisting of a large number of identical oscillatory contractile elements joined in a chain, whose end is attached to a damped mass-spring oscillator. When the inertial load is small, the serial coupling favors an antisynchronous state in which the extension of one oscillator is compensated by the contraction of another, in order to preserve the total length. However, a sufficiently massive load can sychronize the oscillators and can even induce oscillation in situations where isolated elements would be stable. The system has a complex phase diagram displaying quiescent, synchronous and antisynchrononous phases, as well as an unsual asynchronous phase in which the total length of the chain oscillates at a different frequency from the individual active elements.",
+          "answer": "The model studies a chain of identical oscillatory contractile elements attached to a damped mass\u2011spring oscillator, motivated by insect flight muscle. A small inertial load favors an antisynchronous state in which one oscillator\u2019s extension is compensated by another\u2019s contraction, preserving total length. A sufficiently massive load can synchronize the oscillators and induce oscillation when isolated elements would be stable. The system\u2019s phase diagram includes quiescent, synchronous, antisynchronous, and an unusual asynchronous phase where the chain\u2019s total length oscillates at a different frequency from the individual active elements.",
+          "status": "released",
+          "faithfulness": 1.0,
+          "error_type": "Oversimplification",
+          "gatekeeper": {
+            "confidence": 1.0,
+            "reason": "The retrieved evidence is identical to the user query, directly addressing all aspects of the abstract without requiring inference or external knowledge.",
+            "knowledge_gaps": [],
+            "evaluation_ok": true,
+            "requires_human_review": false,
+            "route": "proceed",
+            "is_repeated_query": false
+          },
+          "verifier": {
+            "faithfulness": 1.0,
+            "total_claims": 5,
+            "supported_claims": 5,
+            "reason": "All factual claims in the candidate response are directly supported by the retrieved evidence: the model's structure, motivation by insect flight muscle, effect of small inertial load favoring antisynchrony, effect of massive load inducing synchrony and oscillation, and the complex phase diagram including the unusual asynchronous phase with differing oscillation frequencies.",
+            "unsupported_claims": [],
+            "evaluation_ok": true,
+            "requires_human_review": false
+          },
+          "editor": {
+            "original_length": 660,
+            "new_length": 645,
+            "removal_percentage": 0.022727272727272707,
+            "was_compressed": true,
+            "low_confidence_mode": false,
+            "sentence_count": 4,
+            "sentence_limit": null,
+            "exceeds_removal_threshold": false,
+            "evaluation_ok": true,
+            "used_fallback": false,
+            "requires_human_review": false
+          }
+        },
+        {
+          "query": "Title: Synchronization of active mechanical oscillators by an inertial load\n\nAbstract: Motivated by the operation of myogenic (self-oscillatory) insect flight muscle, we study a model consisting of a large number of identical oscillatory contractile elements joined in a chain, whose end is attached to a damped mass-spring oscillator. When the inertial load is small, the serial coupling favors an antisynchronous state in which the extension of one oscillator is compensated by the contraction of another, in order to preserve the total length. However, a sufficiently massive load can sychronize the oscillators and can even induce oscillation in situations where isolated elements would be stable. The system has a complex phase diagram displaying quiescent, synchronous and antisynchrononous phases, as well as an unsual asynchronous phase in which the total length of the chain oscillates at a different frequency from the individual active elements.",
+          "answer": "",
+          "status": "error",
+          "faithfulness": 0.0,
+          "error_type": "Citation Hallucination",
+          "error": "'NoneType' object has no attribute 'get'"
+        },
+        {
+          "query": "Title: Towards the Understanding of Stability Puzzles in Phage lambda\n\nAbstract: We discuss two aspects, the in vivo and in vitro difference and the modeling of noise, of integrative modeling of network dynamics in biology, using phage lambda as an example. We believe those two aspects have not been seriously considered, and the including of them may be enough to solve the outstanding stability and robustness puzzle of in gene regulatory network dynamics.",
+          "answer": "",
+          "status": "error",
+          "faithfulness": 0.0,
+          "error_type": "Entity Replacement",
+          "error": "'NoneType' object has no attribute 'get'"
+        },
+        {
+          "query": "Title: Towards the Understanding of Stability Puzzles in Phage lambda\n\nAbstract: We discuss two aspects, the in vivo and in vitro difference and the modeling of noise, of integrative modeling of network dynamics in biology, using phage lambda as an example. We believe those two aspects have not been seriously considered, and the including of them may be enough to solve the outstanding stability and robustness puzzle of in gene regulatory network dynamics.",
+          "answer": "",
+          "status": "error",
+          "faithfulness": 0.0,
+          "error_type": "Numerical Distortion",
+          "error": "'NoneType' object has no attribute 'get'"
+        }
+      ],
+      "faithfulness_scores": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "pass_count": 1,
+      "hitl_triggers": {},
+      "error_type_scores": {
+        "Oversimplification": [
+          1.0
+        ]
+      },
+      "latencies": [
+        7.031841278076172,
+        6.954705476760864,
+        5.718442916870117,
+        6.811160564422607,
+        5.229844093322754,
+        6.405814170837402,
+        17.43399977684021,
+        6.408944845199585,
+        4.3817138671875,
+        4.175487041473389
+      ],
+      "summary": {
+        "mean_faithfulness": 0.1,
+        "std_faithfulness": 0.30000000000000004,
+        "pass_rate": 0.1,
+        "total_samples": 10,
+        "mean_latency": 7.05519540309906,
+        "hitl_triggers": {},
+        "hitl_percentage": {},
+        "total_hitl_percentage": 0.0
+      }
+    }
+  },
+  "error_type_analysis": {
+    "Entity Replacement": {
+      "single_qwen": 0.775,
+      "single_gpt-oss": 0.0,
+      "single_deepseek": 0.0,
+      "homogeneous_qwen": 0.0,
+      "homogeneous_gpt-oss": 0.0,
+      "homogeneous_deepseek": 0.0,
+      "heterogeneous_best": 0.0
+    },
+    "Numerical Distortion": {
+      "single_qwen": 1.0,
+      "single_gpt-oss": 0.0,
+      "single_deepseek": 1.0,
+      "homogeneous_qwen": 0.0,
+      "homogeneous_gpt-oss": 0.0,
+      "homogeneous_deepseek": 0.0,
+      "heterogeneous_best": 0.0
+    },
+    "Negation Flip": {
+      "single_qwen": 1.0,
+      "single_gpt-oss": 0.0,
+      "single_deepseek": 0.0,
+      "homogeneous_qwen": 0.0,
+      "homogeneous_gpt-oss": 0.0,
+      "homogeneous_deepseek": 0.0,
+      "heterogeneous_best": 0.0
+    },
+    "Temporal Confusion": {
+      "single_qwen": 1.0,
+      "single_gpt-oss": 0.0,
+      "single_deepseek": 1.0,
+      "homogeneous_qwen": 0.0,
+      "homogeneous_gpt-oss": 0.0,
+      "homogeneous_deepseek": 0.0,
+      "heterogeneous_best": 0.0
+    },
+    "Causal Reversal": {
+      "single_qwen": 1.0,
+      "single_gpt-oss": 0.0,
+      "single_deepseek": 0.0,
+      "homogeneous_qwen": 0.0,
+      "homogeneous_gpt-oss": 0.0,
+      "homogeneous_deepseek": 0.0,
+      "heterogeneous_best": 0.0
+    },
+    "Plausible Fabrication": {
+      "single_qwen": 1.0,
+      "single_gpt-oss": 0.0,
+      "single_deepseek": 1.0,
+      "homogeneous_qwen": 0.0,
+      "homogeneous_gpt-oss": 0.0,
+      "homogeneous_deepseek": 0.0,
+      "heterogeneous_best": 0.0
+    },
+    "Oversimplification": {
+      "single_qwen": 1.0,
+      "single_gpt-oss": 0.0,
+      "single_deepseek": 1.0,
+      "homogeneous_qwen": 0.0,
+      "homogeneous_gpt-oss": 0.0,
+      "homogeneous_deepseek": 0.0,
+      "heterogeneous_best": 1.0
+    },
+    "Citation Hallucination": {
+      "single_qwen": 1.0,
+      "single_gpt-oss": 0.0,
+      "single_deepseek": 1.0,
+      "homogeneous_qwen": 0.0,
+      "homogeneous_gpt-oss": 0.0,
+      "homogeneous_deepseek": 0.0,
+      "heterogeneous_best": 0.0
+    }
+  },
+  "hitl_analysis": {
+    "qwen": {
+      "low_confidence": 0,
+      "medium_confidence_repeated": 0,
+      "low_faithfulness": 0,
+      "excessive_removal": 0,
+      "total": 0,
+      "total_percentage": 0.0
+    },
+    "gpt-oss": {
+      "low_confidence": 0,
+      "medium_confidence_repeated": 0,
+      "low_faithfulness": 0,
+      "excessive_removal": 0,
+      "total": 0,
+      "total_percentage": 0.0
+    },
+    "deepseek": {
+      "low_confidence": 0,
+      "medium_confidence_repeated": 0,
+      "low_faithfulness": 0,
+      "excessive_removal": 0,
+      "total": 0,
+      "total_percentage": 0.0
+    },
+    "heterogeneous": {
+      "low_confidence": 0,
+      "medium_confidence_repeated": 0,
+      "low_faithfulness": 0,
+      "excessive_removal": 0,
+      "total": 0,
+      "total_percentage": 0.0
+    }
+  },
+  "latency_analysis": {
+    "single_qwen": {
+      "mean_latency": 2.683736038208008
+    },
+    "single_gpt-oss": {
+      "mean_latency": 1.9780072689056396
+    },
+    "single_deepseek": {
+      "mean_latency": 2.629229998588562
+    },
+    "homogeneous_qwen": {
+      "mean_latency": 0.07944281101226806
+    },
+    "homogeneous_gpt-oss": {
+      "mean_latency": 0.09472448825836181
+    },
+    "homogeneous_deepseek": {
+      "mean_latency": 0.08890540599822998
+    },
+    "heterogeneous": {
+      "mean_latency": 7.05519540309906
+    }
+  }
+}

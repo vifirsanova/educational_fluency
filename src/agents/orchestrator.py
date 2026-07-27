@@ -11,6 +11,8 @@ Coordinates the pipeline:
 
 import os
 import json
+import uuid
+from datetime import datetime
 from typing import Any, Dict, List, Optional, Tuple
 
 import yaml
@@ -71,6 +73,9 @@ class Orchestrator:
         self.gatekeeper_model = None
         self.verifier_model = None
         self.editor_model = None
+        
+        # Create results directory for HITL queue
+        os.makedirs("results", exist_ok=True)
 
     def set_model(self, model_key: str) -> None:
         """Set the default model for all agents."""
@@ -159,6 +164,28 @@ Return only the answer, without commentary or markdown.
                 f"complete answer. (Generation failed: {error})"
             )
 
+    def _write_to_hitl_queue(self, entry: Dict[str, Any]) -> None:
+        """Write an entry to the HITL queue file."""
+        queue_file = "results/hitl_queue.json"
+        
+        try:
+            # Load existing queue
+            if os.path.exists(queue_file):
+                with open(queue_file, "r", encoding="utf-8") as f:
+                    queue = json.load(f)
+            else:
+                queue = []
+            
+            # Add new entry
+            queue.append(entry)
+            
+            # Write back
+            with open(queue_file, "w", encoding="utf-8") as f:
+                json.dump(queue, f, indent=2, ensure_ascii=False)
+                
+        except Exception as e:
+            print(f"Warning: Could not write to HITL queue: {e}")
+
     def _enqueue_hitl(
         self,
         reason: str,
@@ -173,29 +200,49 @@ Return only the answer, without commentary or markdown.
         """
         Enqueue a human-in-the-loop review request.
         
-        In production, this would write to a queue or database.
+        Writes to results/hitl_queue.json for the dashboard to pick up.
         """
-        result = {
+        # Build the HITL entry
+        entry = {
+            "query_id": str(uuid.uuid4())[:8],
+            "status": "pending",
+            "review_reason": reason,
+            "query": query,
+            "passages": passages,
+            "gatekeeper_result": gatekeeper_result,
+            "gatekeeper_confidence": gatekeeper_result.get("confidence", 0.0),
+            "created_at": datetime.now().isoformat(),
+        }
+        
+        if candidate_answer is not None:
+            entry["candidate_answer"] = candidate_answer
+        
+        if verifier_result is not None:
+            entry["verifier_result"] = verifier_result
+            entry["verifier_faithfulness"] = verifier_result.get("faithfulness", 0.0)
+        
+        if editor_metadata is not None:
+            entry["editor_metadata"] = editor_metadata
+            entry["removal_percentage"] = editor_metadata.get("removal_percentage", 0.0)
+        
+        if edited_answer is not None:
+            entry["edited_answer"] = edited_answer
+        
+        # Write to queue file
+        self._write_to_hitl_queue(entry)
+        
+        # Return the result
+        return {
             "status": "hitl_required",
             "reason": reason,
             "query": query,
             "passages": passages,
             "gatekeeper": gatekeeper_result,
+            "candidate_answer": candidate_answer,
+            "verifier": verifier_result,
+            "editor": editor_metadata,
+            "edited_answer": edited_answer,
         }
-        
-        if candidate_answer is not None:
-            result["candidate_answer"] = candidate_answer
-        
-        if verifier_result is not None:
-            result["verifier"] = verifier_result
-        
-        if editor_metadata is not None:
-            result["editor"] = editor_metadata
-        
-        if edited_answer is not None:
-            result["edited_answer"] = edited_answer
-        
-        return result
 
     def process_query(
         self,
